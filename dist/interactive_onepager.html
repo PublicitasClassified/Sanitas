@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:phone="xalan://com.namics.publiconnect.wlc.common.formatter.PhoneFormatter">
+  <xsl:output method="html" omit-xml-declaration="yes" />
+
+  <div style="display:none">
+    <xsl:param name="languageParam" select="'de'"/>
+    <xsl:param name="logoUrlParam" select="''"/>
+    <xsl:param name="defaultImageUrlParam" select="''"/>
+    <xsl:param name="xsltTemplateImageBasePathParam" select="''"/>
+    <xsl:param name="defaultOriginalImageUrlParam" select="''"/>
+    <xsl:variable name="xsltTemplateImageBasePath" select="$xsltTemplateImageBasePathParam"/>
+    <xsl:variable name="logoUrl" select="$logoUrlParam"/>
+    <xsl:variable name="defaultImageUrl" select="$defaultImageUrlParam"/>
+    <xsl:variable name="bewerberlink" select="/jobAdDetail/adContact/externalObjectLink"/>
+    <xsl:variable name="showDefaultImageDescription">false</xsl:variable>
+    <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/Sensirion/"/>
+  </div>
+
+      
+      <div style="display:none">
+          <xsl:choose>
+          <xsl:when test = "jobAdDetail/languageId='fr'">
+                  <xsl:variable name="btnApply">Postuler</xsl:variable>
+                  <xsl:variable name="btnPrint">Imprimer</xsl:variable>
+                  <xsl:variable name="btnSendAFriend">Recommander</xsl:variable>
+                  <xsl:variable name="subOrganization">Société</xsl:variable>
+                  <xsl:variable name="subObjecttitle">titre d'emploi</xsl:variable>
+                  <xsl:variable name="subDescription">Description du poste</xsl:variable>
+                  <xsl:variable name="subRequirements">Profil demandé</xsl:variable>
+                  <xsl:variable name="subBenefits">Nousoffrons</xsl:variable>
+              </xsl:when>
+              <xsl:when test = "jobAdDetail/languageId='it'">
+                  <xsl:variable name="btnApply">Candidatura</xsl:variable>
+                  <xsl:variable name="btnPrint">Stampa</xsl:variable>
+                  <xsl:variable name="btnSendAFriend">Raccomandare</xsl:variable>
+                  <xsl:variable name="subOrganization">Società</xsl:variable>
+                  <xsl:variable name="subObjecttitle">titolo di lavoro</xsl:variable>
+                  <xsl:variable name="subDescription">Descrizione del lavoro</xsl:variable>
+                  <xsl:variable name="subRequirements">Il suo profilo</xsl:variable>
+                  <xsl:variable name="subBenefits">Offriamo</xsl:variable>
+              </xsl:when>
+              <xsl:when test = "jobAdDetail/languageId='en'">
+                  <xsl:variable name="btnApply">Apply now</xsl:variable>
+                  <xsl:variable name="btnPrint">Print</xsl:variable>
+                  <xsl:variable name="btnSendAFriend">Send a friend</xsl:variable>
+                  <xsl:variable name="subOrganization">Company</xsl:variable>
+                  <xsl:variable name="subObjecttitle">Job Title</xsl:variable>
+                  <xsl:variable name="subDescription">Job Description</xsl:variable>
+                  <xsl:variable name="subRequirements">Your profile</xsl:variable>
+                  <xsl:variable name="subBenefits">We offer</xsl:variable>
+              </xsl:when>
+              <xsl:otherwise>
+                  <xsl:variable name="btnApply">Bewerben</xsl:variable>
+                  <xsl:variable name="btnPrint">Drucken</xsl:variable>
+                  <xsl:variable name="btnSendAFriend">Weiterempfehlen</xsl:variable>
+                  <xsl:variable name="subOrganization">Firmenportrait</xsl:variable>
+                  <xsl:variable name="subObjecttitle">Stellenbezeichnung</xsl:variable>
+                  <xsl:variable name="subDescription">Stellenbeschreibung</xsl:variable>
+                  <xsl:variable name="subRequirements">Anforderungsprofil</xsl:variable>
+                  <xsl:variable name="subBenefits">Wir bieten</xsl:variable>
+              </xsl:otherwise>
+          </xsl:choose>
+      </div>
+      
+      <xsl:template match="/">
+          <html class="no-js">
+            <head>
+              <meta charset="utf-8" />
+              <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+              <title>Interaktives Stelleninserat Onepager</title>
+              <link rel="stylesheet" href="assets/css/app.css"/>
+              <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+            		
+            <!-- youtube player embed async loading and event trigger (play/pause) -->			
+            		<script>
+            
+              // 2. This code loads the IFrame Player API code asynchronously.
+            
+                  var tag = document.createElement('script');
+            
+                  tag.src = "https://www.youtube.com/iframe_api";
+                  var firstScriptTag = document.getElementsByTagName('script')[0];
+                  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+              // 3. This function creates an iframe (and YouTube player)
+              //    after the API code downloads.
+            
+                  var player;
+                  function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+            
+             //     videoId: 'rcY_Xx6MJpk',
+            
+            
+                  events:
+                   {      
+                    'onStateChange': function (event)
+                        {
+                        if (event.data == YT.PlayerState.PLAYING) {
+              $('#header_claim').fadeOut('slow');
+                        }
+                        else if (event.data == YT.PlayerState.PAUSED)
+                           { 
+                             $("#header_claim").fadeIn('slow');
+                           }             
+                                     
+                         }
+                   }
+                        
+                });
+                    
+              }
+            	
+            		</script>
+            </head>
+            <body class="row align-center">
+      
+      <!--   <xsl:call-template name="logo"/>
+        <xsl:call-template name="defaultImage"/> -->
+      
+      <!--         <xsl:apply-templates select="/jobAdDetail/organization"/>
+              <xsl:apply-templates select="/jobAdDetail/description"/>
+              <xsl:apply-templates select="/jobAdDetail/requirements"/>
+              <xsl:apply-templates select="/jobAdDetail/benefits"/> -->
+      
+      <!-- skrollr;
+      
+      
+        <div
+          class="parallax-image-wrapper parallax-image-wrapper-100"
+          data-anchor-target="#home + .gap"
+          data-bottom-top="transform:translate(0px, 200%)"
+          data-top-bottom="transform:translate(0px, 0%)">
+      
+          <div
+            class="parallax-image parallax-image-100"
+            style="background-image:url(https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives_Stelleninserat/AEW/assets/img/hg_beschreibung.jpg)"
+            data-anchor-target="#home + .gap"
+            data-bottom-top="transform: translate(0px, -80%);"
+            data-top-bottom="transform: translate(0px, 80%);"
+          ></div>
+      
+      </div> -->
+      
+      
+      
+      <!-- nav -->
+      <div id="skrollr-body">
+      
+      <!-- <header id="header" class="topbar-sticky-shrink-header"></header> -->
+      
+      
+        <nav class="NavContainer" data-sticky-container="">
+          <div class="topbar-sticky-shrink" data-sticky="" data-options="top-anchor: header:bottom; marginTop: 0; stickyOn: small;">
+      
+            <div id="siteNavToggler" class="title-bar row collapse" data-responsive-toggle="siteNav" data-hide-for="medium"> 
+              <a href="#" class="left_logo show-for-small-only">
+                <img src="assets/img/Logo_Sanitas.svg" width="40%"/>
+              </a>
+               <div class="left_title show-for-small-only">
+                <h5 class="text-right">
+                  <xsl:comment>Stellentitel</xsl:comment>
+                  <xsl:apply-templates select="/jobAdDetail/title"/>
+                </h5>
+              </div>   
+              <button class="menu-icon float-right" type="button" data-toggle=""></button>
+            </div>
+      
+            <div id="siteNav" class="top-bar" data-magellan="" activeClass="active" data-bar-offset='100'>
+      
+              <div class="left_logo hide-for-small-only">
+                <img src="assets/img/Logo_Sanitas.svg"/>
+              </div>
+               <div class="left_title hide-for-small-only">
+                <h6>
+                  <div class="text-right">
+                    <xsl:comment>Stellentitel</xsl:comment>
+                    <xsl:apply-templates select="/jobAdDetail/title"/>
+                  </div>
+                </h6>
+              </div>
+      
+              <div class="top-bar-right align-self-bottom">
+                <ul class="menu dropdown" data-dropdown-menu="">
+        <!--           <li class="has-submenu">
+                    <a href="#sd"><h5>Stellendetails</h5></a>
+                    <ul class="submenu vertical" data-submenu="">
+                      <li><a href="#bs">Beschreibung</a></li>
+                      <li><a href="#af">Anforderungen</a></li>
+                    </ul>
+                  </li> -->
+      <!--             
+                  <li><a href="#sd"><h5>Stellendetails</h5></a></li>
+      
+                  
+                  <li><a href="#ao"><h5>Arbeitsort</h5></a></li>
+      
+                  
+                  <li><a href="#uu"><h5>Arbeiten bei der Sanitas</h5></a></li>
+      
+                  
+                  <li><a href="#kt"><h5>Kontakt</h5></a></li>
+      
+                  
+                  <li><a href="#"><h5></h5></a></li>
+      
+                   -->
+                  <li><a href="#sd"><h5>Stellendetails</h5></a></li>
+                  <li><a href="#ao"><h5>Arbeitsort</h5></a></li>
+                  <li><a href="#uu"><h5>Arbeiten bei der Sanitas</h5></a></li>
+                  <li><a href="#kt"><h5>Kontakt</h5></a></li>                  
+                </ul>
+              </div>
+      
+      
+            </div>
+      
+          </div>
+        </nav>
+      
+      <!--     <div class="row align-center collapse">
+            <div class="small-12 column">
+              <div id="header_claim">
+                <h3>«Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut»</h3>
+              </div>
+              <div class="resizer">
+                <iframe id="player"
+                    src="https://www.youtube.com/embed/rcY_Xx6MJpk?enablejsapi=1&amp;rel=0&amp;showinfo=0&amp;autohide=1"
+                    frameborder="0" 
+                    allowfullscreen=""
+                    onload="this.height=this.contentWindow.document.body.scrollHeight;"
+                    width="100%"
+                    >
+                </iframe>
+              </div>
+            </div>
+          </div> -->
+      
+      
+      
+      <div class="row align-center collapse">
+        <div class="small-12 column">
+          <div class="responsive-embed widescreen">
+            <iframe
+              id="player"
+              width="854"
+              height="480"
+              src="https://www.youtube.com/embed/5BZNvGFoODw?enablejsapi=1&amp;rel=0&amp;showinfo=0&amp;autohide=1"
+              frameborder="0"
+              allowfullscreen=""
+              >
+            </iframe>
+          </div>
+        </div>
+      </div>
+      
+      
+        <!-- sections -->
+      
+      
+        <section id="home" class="row align-center collapse">
+          <div class="column small-12 medium-10 large-8">
+            <h1>Stellentitel kann auch mehrzeilig sein</h1>
+          </div>
+        </section>
+      
+         <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+          <div class="column small-12 medium-10 large-8">
+            <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
+            <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
+              <ul>
+                <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+                <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+                <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+                <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+              </ul>
+            </p>
+            <h3 id="af" data-magellan-target="af">Anforderungen</h3>
+              <p>
+                <ul>
+                  <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+                  <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+                  <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+                  <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+                </ul>
+              </p>
+          </div>
+        </section>
+      
+        <section id="ao" data-magellan-target="ao" class="row align-center collapse">
+          <div class="column small-12 medium-10 large-8">
+            <h1>Arbeitsort</h1>
+             <div class="responsive-embed">
+              <iframe
+                style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
+                allowfullscreen="allowfullscreen"
+                frameborder="0"
+              > 
+              </iframe>
+            </div>
+          </div>
+        </section>
+      
+        <section id="uu" data-magellan-target="uu" class="row align-center collapse">
+          <div class="column small-12 medium-10 large-8">
+            <h1>Arbeiten bei der Sanitas</h1>
+          </div>
+            <!-- <div class="row">
+              <div class="columns">
+                <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="" data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+                  <ul class="orbit-container">
+                    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+                    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+                    <li class="is-active orbit-slide">
+                      <img class="orbit-image" src="http://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg" alt="Space">
+                      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                      <img class="orbit-image" src="http://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg" alt="Space">
+                      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                      <img class="orbit-image" src="http://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg" alt="Space">
+                      <figcaption class="orbit-caption">Encapsulating</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                      <img class="orbit-image" src="http://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg" alt="Space">
+                      <figcaption class="orbit-caption">Outta This World</figcaption>
+                    </li>
+                  </ul>
+                  <nav class="orbit-bullets">
+                   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+                 </nav>
+                </div>
+              </div>
+            </div> -->
+            
+            
+            
+                <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="">
+                  <div class="orbit-wrapper">
+                    <div class="orbit-controls">
+                      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                    </div>
+                    <ul class="orbit-container row align-center collapse">
+                      <li class="is-active orbit-slide">
+                        <div class="column small-12 medium-10 large-8">
+                          <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
+                          <h6>Unternehmen</h6>
+                          <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+                        </div>
+                      </li>
+                      <li class="orbit-slide">        
+                        <div class="column small-12 medium-10 large-8">
+                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
+                          <h6>Medien</h6>
+                          <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
+                        </div>
+                      </li>
+                      <li class="orbit-slide">            
+                        <div class="column small-12 medium-10 large-8">
+                          <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
+                          <h6>Publikationen</h6>
+                          <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
+                        </div>
+                      </li>
+                      <li class="orbit-slide">
+                        <div class="column small-12 medium-10 large-8">
+                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
+                          <h6>Sanitas als Arbeitsgeber</h6>
+                          <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
+                        </div>
+                      </li>     
+                    </ul>
+                  </div>
+            <!--       <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>   
+                  </nav> -->
+                </div>
+        </section>
+      
+        <section id="kt" data-magellan-target="kt" class="row align-center collapse">
+          <div class="column small-12 medium-10 large-8">
+            <h5>Kontakt</h5>
+            <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
+              <a>humanresources@sanitas.com</a>
+            </p>
+          </div>
+        </section>
+      
+         <footer class="row align-justify">
+          <div class="small-4 column social">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>        
+          </div>
+          <div class="small-4 column">
+            <a>Rechtlicher Hinweis</a>
+            <a>Impressum</a>
+          </div>  
+        </footer>
+      </div>
+      
+      <!-- <script src="https://cms.publisherconnect.ch/fileadmin/user/microsites/_skrollr/skrollr_0.6.30_min.js"></script> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="assets/js/app.js"></script>
+      <script src="https://use.typekit.net/ldw1rdt.js"></script>
+      <script>try{Typekit.load({ async: true });}catch(e){}</script>
+      
+      <script>     
+      $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').prop('disabled', true);
+      $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').remove();
+      </script> 
+          
+      
+      <!-- load Foundation sticky script, Logowechsel -->
+      <script>
+      $('#skrollr-body').on('sticky.zf.stuckto:top', function(){
+        $('.left_logo').addClass("hide");
+        $('.left_title').removeClass("hide");
+        $('.content_title').addClass("hide");  
+      
+      }).on('sticky.zf.unstuckfrom:top', function(){
+        $(this).removeClass('shrink');
+        $('.left_logo').removeClass("hide");
+        $('.left_title').addClass("hide");
+        $('.content_title').removeClass("hide");    
+      })
+      </script>
+      
+      <!-- <script>
+      function EasyPeasyParallax() {
+        scrollPos = $(this).scrollTop();
+        $('.landing').css({
+          'margin-top': (scrollPos/4)+"px",
+          'opacity': 1-(scrollPos/250)
+        });
+      }
+      $(document).ready(function(){
+        $(window).scroll(function() {
+          EasyPeasyParallax();
+        });
+      });
+      </script> -->
+      
+      
+      <script>
+      (function(){
+      
+        var parallax = document.querySelectorAll(".parallax_image"),
+            speed = 0.1;
+      
+        window.onscroll = function(){
+          [].slice.call(parallax).forEach(function(el,i){
+      
+            var windowYOffset = window.pageYOffset,
+                elBackgrounPos = "50% " + (- windowYOffset * speed) + "px";
+      
+            el.style.backgroundPosition = elBackgrounPos;
+      
+          });
+        };
+      
+      })();
+      </script>
+      
+      <!-- <script>
+      $('.parallax').each(function(){
+              $this= $(this);
+              var window_y = (window.pageYOffset+1000);
+              var elBackgrounPos = "0 " + (window_y * speed) + "px";  
+              $this.css('background-position', elBackgrounPos);
+      });
+      </script> -->
+      
+      <!-- <script>  
+        skrollr.init({
+        smoothScrolling: false,
+        mobileDeceleration: 0.004
+        });
+      </script> -->
+      
+              </body>
+            </html>
+        </xsl:template>
+      
+      
+      <!-- Firmenportrait -->
+      <xsl:template match="organization">
+          <xsl:value-of disable-output-escaping="yes" select="/jobAdDetail/organization"/>
+      </xsl:template>
+      
+      <!-- Titel -->
+      <xsl:template match="title">
+      	<xsl:value-of disable-output-escaping="yes" select="."/>
+      </xsl:template>
+      
+      <!-- Stellenbeschreibung -->
+      <xsl:template match="description">
+      	<xsl:value-of disable-output-escaping="yes" select="."/>
+      </xsl:template>
+      
+      <!-- Anforderungsprofil -->
+      <xsl:template match="requirements">
+      	<xsl:value-of disable-output-escaping="yes" select="."/>
+      </xsl:template>
+      
+      <!-- Wir bieten -->
+      <xsl:template match="benefits">
+      	<xsl:value-of disable-output-escaping="yes" select="."/>
+      </xsl:template>
+      
+      
+</xsl:stylesheet>
+

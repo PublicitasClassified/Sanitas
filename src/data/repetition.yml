@@ -1,0 +1,37 @@
+nav:
+  -
+    id: sd
+    desc: Stellendetails
+  -
+    id: ao
+    desc: Arbeitsort
+  -
+    id: uu
+    desc: Arbeiten bei der Sanitas
+  -
+    id: kt
+    desc: Kontakt
+  -  
+
+sections:
+  -
+    id: sd
+    claim: Stellentitel
+    text: sdfsdfsd
+  -
+    id: ao
+    title: jöjöjö
+    text: sdfsdfsdfsdfsdfsdfsf
+    sub_id: sub id
+    sub_title: sub title
+    sub_text: sub id    
+  -
+    sub_id: sub id2
+    sub_title: sub title2
+    sub_text: sub id 2   
+  -
+    partial: "{{> html_google_map}}"
+    sub_title: sub title2
+    sub_text: sub id 2   
+  -
+
