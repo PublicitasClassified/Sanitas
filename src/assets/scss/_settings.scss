@@ -63,7 +63,8 @@ $black: #0a0a0a;
 $white: #fff;
 $body-background: $white;   // Hintergrund für alle Templates, "Browserfenster" //
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+// $body-font-family: 'Helvetica Neue', Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'open-sans', Times, Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -91,7 +92,7 @@ $breakpoint-classes: (small medium large);
 
 // 3. The Grid
 // -----------
-$grid-row-width: rem-calc(900);    // Grid-Breite: das heisst, der 12er-Raster kann maximal die Anzahl 'rem' für 900px einnehmen (und wird ab dann zentriert) //
+$grid-row-width: rem-calc(900);    // Grid-Breite: das heisst, das 12er-Raster kann maximal die Anzahl 'rem' für 900px einnehmen (und wird ab dann zentriert) //
 
 section{
   background: #f1f0eb;    // Hintergrundfarbe für das Grid //
@@ -117,7 +118,7 @@ $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
+    'h1': ('font-size': 22),
     'h2': ('font-size': 20),
     'h3': ('font-size': 19),
     'h4': ('font-size': 18),
