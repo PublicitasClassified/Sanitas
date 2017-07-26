@@ -72,6 +72,8 @@
               <title>Interaktives Stelleninserat Onepager</title>
               <link rel="stylesheet" href="assets/css/app.css"/>
               <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+              <script src="https://use.typekit.net/wpv4wvn.js"></script>
+              <script>try{Typekit.load({ async: true });}catch(e){}</script>        
             		
             <!-- youtube player embed async loading and event trigger (play/pause) -->			
             		<script>
@@ -125,10 +127,9 @@
               <xsl:apply-templates select="/jobAdDetail/requirements"/>
               <xsl:apply-templates select="/jobAdDetail/benefits"/> -->
       
-      <!-- skrollr;
+      <!--skrollr;-->
       
-      
-        <div
+      <!--   <div
           class="parallax-image-wrapper parallax-image-wrapper-100"
           data-anchor-target="#home + .gap"
           data-bottom-top="transform:translate(0px, 200%)"
@@ -136,7 +137,7 @@
       
           <div
             class="parallax-image parallax-image-100"
-            style="background-image:url(https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives_Stelleninserat/AEW/assets/img/hg_beschreibung.jpg)"
+            style="background-image:url(assets/img/hg_beschreibung.jpg)"
             data-anchor-target="#home + .gap"
             data-bottom-top="transform: translate(0px, -80%);"
             data-top-bottom="transform: translate(0px, 80%);"
@@ -148,6 +149,7 @@
       
       <!-- nav -->
       <div id="skrollr-body">
+      
       
       <!-- <header id="header" class="topbar-sticky-shrink-header"></header> -->
       
@@ -168,7 +170,7 @@
               <button class="menu-icon float-right" type="button" data-toggle=""></button>
             </div>
       
-            <div id="siteNav" class="top-bar" data-magellan="" activeClass="active" data-bar-offset='100'>
+            <div id="siteNav" class="top-bar" data-magellan="" activeClass="active" data-bar-offset='20'>
       
               <div class="left_logo hide-for-small-only">
                 <img src="assets/img/Logo_Sanitas.svg"/>
@@ -213,7 +215,6 @@
                   <li><a href="#kt"><h5>Kontakt</h5></a></li>                  
                 </ul>
               </div>
-      
       
             </div>
       
@@ -260,13 +261,21 @@
         <!-- sections -->
       
       
-        <section id="home" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Stellentitel kann auch mehrzeilig sein</h2>
-          </div>
-        </section>
       
-         <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+      <section id="home" class="row align-center collapse">
+      
+            <div class="column small-11 medium-10 large-8">
+              <h2>Stellentitel kann auch mehrzeilig sein</h2>
+            </div>
+      
+      </section>
+      
+      
+      <div class="parallax-wrapper">
+      
+      
+        <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+      
           <div class="column small-11 medium-10 large-8">
             <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
             <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
@@ -289,198 +298,326 @@
           </div>
         </section>
       
-        <section id="ao" data-magellan-target="ao" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Arbeitsort</h2>
-             <div class="responsive-embed">
-              <iframe
-                style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
-                allowfullscreen="allowfullscreen"
-                frameborder="0"
-              > 
-              </iframe>
-            </div>
+      
+      <!-- 
+        <section id="sd" data-magellan-target="sd" class="slide row align-center collapse">
+      
+          <div class="column small-11 medium-10 large-8 content">
+            <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
+            <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
+              <ul>
+                <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+                <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+                <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+                <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+              </ul>
+            </p>
+            <h3 id="af" data-magellan-target="af">Anforderungen</h3>
+              <p>
+                <ul>
+                  <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+                  <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+                  <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+                  <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+                </ul>
+              </p>
           </div>
         </section>
       
-        <section id="uu" data-magellan-target="uu" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Arbeiten bei der Sanitas</h2>
-          </div>
-            
-            
-            <div class="row align-center">
-              <div class="columns small-12 medium-10 large-8">
-                <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-                  
-                  <ul class="orbit-container">
-                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-                    
-                    <li class="is-active orbit-slide">
-                      <div class="row">
-                        <div class="column hide-for-medium shrink">
-                          <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
-                          <h6>Unternehmen</h6>
-                          <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                        </div>              
-                        <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
-                          <h6>Unternehmen</h6>
-                          <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                        </div>              
-                        <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
-                          <h6>Medien</h6>
-                          <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-                        </div>
-                         <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
-                          <h6>Publikationen</h6>
-                          <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-                        </div>
-                      </div>           
-                    </li>
-                    
-                    <li class="orbit-slide">
-                      <div class="row">
-                        <div class="column hide-for-medium shrink">
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
-                          <h6>Medien</h6>
-                          <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-                        </div>
-                        <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
-                          <h6>Sanitas als Arbeitsgeber</h6>
-                          <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-                        </div>
-                      </div>
-                    </li>
-            
-                    <li class="orbit-slide">
-                      <div class="row">
-                        <div class="column hide-for-medium shrink">
-                          <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
-                          <h6>Publikationen</h6>
-                          <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-                        </div>              
-                        <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
-                          <h6>Unternehmen</h6>
-                          <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                        </div>              
-                        <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
-                          <h6>Medien</h6>
-                          <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-                        </div>
-                         <div class="column small-4 show-for-medium">          
-                          <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
-                          <h6>Publikationen</h6>
-                          <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-                       </div>
-                      </div>           
-                    </li>
-                    
-                    <li class="orbit-slide">
-                      <div class="row">
-                        <div class="column hide-for-medium shrink">
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
-                          <h6>Sanitas als Arbeitsgeber</h6>
-                          <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-                        </div>
-                        <div class="column small-4 show-for-medium">               
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
-                          <h6>Sanitas als Arbeitsgeber</h6>
-                          <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-                        </div>
-                      </div>                       
-                    </li>
-                  </ul>
-                </div>
+                <div class="row align-center collapse">
+                  <img src="assets/img/hg_beschreibung.jpg" alt="Stimmungsbild"/>
+              </div>
+       -->
+      
+      
+      
+      
+      
+         <div
+            class="parallax row align-center collapse"
+            style="background-image:url('assets/img/hg_beschreibung.jpg')">
+        </div> 
+      
+      <section id="ao" data-magellan-target="ao" class="row align-center collapse">
+      
+            <div class="column small-11 medium-10 large-8">
+              <h2>Arbeitsort</h2>
+               <div class="responsive-embed">
+                <iframe
+                  style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
+                  allowfullscreen="allowfullscreen"
+                  frameborder="0"
+                > 
+                </iframe>
               </div>
             </div>
-            
-            
-            
-            <!--     <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="">
-                  <div class="orbit-wrapper">
-                    <div class="orbit-controls">
-                      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+      
+      </section>
+      
+       
+      
+        <section id="uu" data-magellan-target="uu" class="row align-center collapse">
+              <div class="column small-11 medium-10 large-8">
+                <h2>Arbeiten bei der Sanitas</h2>
+              </div>
+                
+                
+                <div class="row align-center">
+                  <div class="columns small-12 medium-10">
+                    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="">
+                      
+                      <ul class="orbit-container">
+                        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                        <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                        
+                        <li class="is-active orbit-slide">
+                          <div class="row">
+                            <div class="column hide-for-medium shrink">
+                              <div class="card">
+                                <div class="card-image">
+                                  <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Unternehmen</h6>
+                                  <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+                                </div>
+                              </div>     
+                             </div>              
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">              
+                                <div class="card-image">
+                                  <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Unternehmen</h6>
+                                  <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+                                </div>
+                              </div>    
+                            </div>
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">              
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Medien</h6>
+                                  <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
+                                </div>
+                              </div>    
+                            </div>
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">                
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Publikationen</h6>
+                                  <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
+                                </div>
+                              </div>
+                            </div>            
+                          </div>                                     
+                        </li>
+                        
+                        <li class="orbit-slide">
+                          <div class="row">
+                            <div class="column hide-for-medium shrink">
+                              <div class="card">              
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Medien</h6>
+                                  <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
+                                </div>
+                              </div>
+                            </div>            
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">                 
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Sanitas als Arbeitsgeber</h6>
+                                  <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
+                                </div>
+                              </div>
+                            </div>            
+                          </div>   
+                        </li>
+                
+                       <li class="orbit-slide">
+                          <div class="row">
+                            <div class="column hide-for-medium shrink">
+                              <div class="card">
+                                <div class="card-image">
+                                  <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Publikationen</h6>
+                                  <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
+                                </div>
+                              </div>
+                             </div>              
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">              
+                                <div class="card-image">
+                                  <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Unternehmen</h6>
+                                  <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+                                </div>
+                             </div>
+                            </div>            
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">              
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Medien</h6>
+                                  <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
+                                </div>
+                              </div>      
+                            </div>
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">              
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Publikationen</h6>
+                                  <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
+                                </div>
+                             </div>                
+                            </div>
+                          </div>                                     
+                        </li>
+                
+                        <li class="orbit-slide">
+                          <div class="row">
+                            <div class="column hide-for-medium shrink">
+                              <div class="card">              
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Sanitas als Arbeitsgeber</h6>
+                                  <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
+                                </div>
+                              </div>                 
+                            </div>
+                            <div class="column small-4 show-for-medium">
+                              <div class="card">
+                                <div class="card-image">
+                                 <img class="orbit-image" src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber"/>
+                                </div>
+                                <div class="card-section">
+                                  <h6>Sanitas als Arbeitsgeber</h6>
+                                  <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
+                                </div>
+                              </div>                
+                            </div>
+                          </div>   
+                        </li>
+                      </ul>
                     </div>
-                    <ul class="orbit-container row align-center collapse">
-                      <li class="is-active orbit-slide">
-                        <div class="column small-12 medium-10 large-8">
-                          <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
-                          <h6>Unternehmen</h6>
-                          <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                        </div>
-                      </li>
-                      <li class="orbit-slide">        
-                        <div class="column small-12 medium-10 large-8">
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
-                          <h6>Medien</h6>
-                          <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-                        </div>
-                      </li>
-                      <li class="orbit-slide">            
-                        <div class="column small-12 medium-10 large-8">
-                          <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
-                          <h6>Publikationen</h6>
-                          <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-                        </div>
-                      </li>
-                      <li class="orbit-slide">
-                        <div class="column small-12 medium-10 large-8">
-                          <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
-                          <h6>Sanitas als Arbeitsgeber</h6>
-                          <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-                        </div>
-                      </li>     
-                    </ul>
                   </div>
-                   <nav class="orbit-bullets">
-                    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>   
-                  </nav>
-                </div> -->
+                </div>
+                
+                
+                
+                <!--     <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="">
+                      <div class="orbit-wrapper">
+                        <div class="orbit-controls">
+                          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                        </div>
+                        <ul class="orbit-container row align-center collapse">
+                          <li class="is-active orbit-slide">
+                            <div class="column small-12 medium-10 large-8">
+                              <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
+                              <h6>Unternehmen</h6>
+                              <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+                            </div>
+                          </li>
+                          <li class="orbit-slide">        
+                            <div class="column small-12 medium-10 large-8">
+                              <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
+                              <h6>Medien</h6>
+                              <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
+                            </div>
+                          </li>
+                          <li class="orbit-slide">            
+                            <div class="column small-12 medium-10 large-8">
+                              <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
+                              <h6>Publikationen</h6>
+                              <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
+                            </div>
+                          </li>
+                          <li class="orbit-slide">
+                            <div class="column small-12 medium-10 large-8">
+                              <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Sanitas als Arbeitsgeber"/>
+                              <h6>Sanitas als Arbeitsgeber</h6>
+                              <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
+                            </div>
+                          </li>     
+                        </ul>
+                      </div>
+                       <nav class="orbit-bullets">
+                        <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>   
+                      </nav>
+                    </div> -->
         </section>
+      
+      
+      
       
         <section id="kt" data-magellan-target="kt" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Kontakt</h2>
-            <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
-              <a>humanresources@sanitas.com</a>
-            </p>
-          </div>
+      
+              <div class="column small-11 medium-10 large-8">
+                <h2>Kontakt</h2>
+                <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
+                  <a>humanresources@sanitas.com</a>
+                </p>
+              </div>
+      
         </section>
       
+      
          <footer class="row align-justify">
-          <div class="small-4 column social">
+          <div class="small-6 column shrink social">
               <i class="fa fa-facebook" aria-hidden="true"></i>
               <i class="fa fa-youtube" aria-hidden="true"></i>
               <i class="fa fa-twitter" aria-hidden="true"></i>        
           </div>
-          <div class="small-4 column">
+          <div class="small-6 column shrink">
             <a>Rechtlicher Hinweis</a>
             <a>Impressum</a>
-          </div>  
+          </div>
         </footer>
+      
       </div>
+      </div>
+      
+      
+      
+      
+      
       
       <!-- <script src="https://cms.publisherconnect.ch/fileadmin/user/microsites/_skrollr/skrollr_0.6.30_min.js"></script> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
       <script src="assets/js/app.js"></script>
-      <script src="https://use.typekit.net/wpv4wvn.js"></script>
-      <script>try{Typekit.load({ async: true });}catch(e){}</script>
+      
       
       <script>     
       $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').prop('disabled', true);
       $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').remove();
       </script> 
-          
+        
       
       <!-- load Foundation sticky script, Logowechsel -->
       <script>
@@ -495,12 +632,22 @@
       })
       </script>
       
+      
+      
+      
       <!-- <script>
+      
+      $.fn.scrollBottom = function() { 
+        return $(document).height() - this.scrollTop() - this.height();
+      };
+      
       function EasyPeasyParallax() {
-        scrollPos = $(this).scrollTop();
-        $('.landing').css({
-          'margin-top': (scrollPos/4)+"px",
-          'opacity': 1-(scrollPos/250)
+      var scrollB = $(this).scrollBottom();
+      var scrollPos = $(this).scrollTop();
+        $('.parallax').css({
+          'background-position' : '50% ' + (scrollB-scrollPos/4)+"px",
+          'height' : 0,
+          'padding-bottom': (scrollPos/3)+"px"
         });
       }
       $(document).ready(function(){
@@ -508,10 +655,23 @@
           EasyPeasyParallax();
         });
       });
-      </script> -->
+      
+      function parallax_komp(anc){
+        var elems = $('#'+anc);
+        var elem = elems[0];
+        var ot = elem.offsetTop;
+        var height = $(document).height();  
+        var sp = $(this).scrollTop();
+        var pelem = $(window).scrollBottom();
+        window.scrollTo(0, height - sp/3);
+      }
+      
+      </script>
+       -->
       
       
-      <script>
+      
+      <!-- <script>
       (function(){
       
         var parallax = document.querySelectorAll(".parallax_image"),
@@ -521,7 +681,7 @@
           [].slice.call(parallax).forEach(function(el,i){
       
             var windowYOffset = window.pageYOffset,
-                elBackgrounPos = "50% " + (- windowYOffset * speed) + "px";
+                elBackgrounPos = "100% " + (- windowYOffset * speed) + "px";
       
             el.style.backgroundPosition = elBackgrounPos;
       
@@ -529,7 +689,7 @@
         };
       
       })();
-      </script>
+      </script> -->
       
       <!-- <script>
       $('.parallax').each(function(){
