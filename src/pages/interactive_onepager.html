@@ -15,6 +15,8 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
         <title>{{meta-title}}</title>
         <link rel="stylesheet" href="{{root}}assets/css/app.css"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+        <script src="https://use.typekit.net/wpv4wvn.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>        
       {{> js_youtube_video}}
       </head>
       <body class="row align-center">
@@ -27,10 +29,9 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
         <xsl:apply-templates select="/jobAdDetail/requirements"/>
         <xsl:apply-templates select="/jobAdDetail/benefits"/> -->
 
-<!-- skrollr;
+<!--skrollr;-->
 
-
-  <div
+<!--   <div
     class="parallax-image-wrapper parallax-image-wrapper-100"
     data-anchor-target="#home + .gap"
     data-bottom-top="transform:translate(0px, 200%)"
@@ -38,7 +39,7 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
 
     <div
       class="parallax-image parallax-image-100"
-      style="background-image:url({{basepath}}assets/img/hg_beschreibung.jpg)"
+      style="background-image:url({{root}}assets/img/hg_beschreibung.jpg)"
       data-anchor-target="#home + .gap"
       data-bottom-top="transform: translate(0px, -80%);"
       data-top-bottom="transform: translate(0px, 80%);"
@@ -51,6 +52,7 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
 <!-- nav -->
 <div id="skrollr-body">
 
+
 {{> navStickyTitlebarTopbar}}
 {{> html_youtube_video}}
 
@@ -58,13 +60,21 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
   <!-- sections -->
 
 
-  <section id="home" class="row align-center collapse">
-    <div class="column small-11 medium-10 large-8">
-      <h2>Stellentitel kann auch mehrzeilig sein</h2>
-    </div>
-  </section>
 
-   <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+<section id="home" class="row align-center collapse">
+
+      <div class="column small-11 medium-10 large-8">
+        <h2>Stellentitel kann auch mehrzeilig sein</h2>
+      </div>
+
+</section>
+
+
+<div class="parallax-wrapper">
+
+
+  <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+
     <div class="column small-11 medium-10 large-8">
       <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
       <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
@@ -87,61 +97,117 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
     </div>
   </section>
 
-  <section id="ao" data-magellan-target="ao" class="row align-center collapse">
-    <div class="column small-11 medium-10 large-8">
-      <h2>Arbeitsort</h2>
-       <div class="responsive-embed">
-        <iframe
-          style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
-          allowfullscreen="allowfullscreen"
-          frameborder="0"
-        > 
-        </iframe>
-      </div>
+
+<!-- 
+  <section id="sd" data-magellan-target="sd" class="slide row align-center collapse">
+
+    <div class="column small-11 medium-10 large-8 content">
+      <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
+      <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
+        <ul>
+          <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+          <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+          <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+          <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+        </ul>
+      </p>
+      <h3 id="af" data-magellan-target="af">Anforderungen</h3>
+        <p>
+          <ul>
+            <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
+            <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
+            <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
+            <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
+          </ul>
+        </p>
     </div>
   </section>
+
+          <div class="row align-center collapse">
+            <img src="{{root}}assets/img/hg_beschreibung.jpg" alt="Stimmungsbild"/>
+        </div>
+ -->
+
+
+
+
+
+   <div
+      class="parallax row align-center collapse"
+      style="background-image:url('{{root}}assets/img/hg_beschreibung.jpg')">
+  </div> 
+
+<section id="ao" data-magellan-target="ao" class="row align-center collapse">
+
+      <div class="column small-11 medium-10 large-8">
+        <h2>Arbeitsort</h2>
+         <div class="responsive-embed">
+          <iframe
+            style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
+            allowfullscreen="allowfullscreen"
+            frameborder="0"
+          > 
+          </iframe>
+        </div>
+      </div>
+
+</section>
+
+ 
 
   <section id="uu" data-magellan-target="uu" class="row align-center collapse">
-    <div class="column small-11 medium-10 large-8">
-      <h2>Arbeiten bei der Sanitas</h2>
-    </div>
-      {{> html_orbit_image_slider}}
+        <div class="column small-11 medium-10 large-8">
+          <h2>Arbeiten bei der Sanitas</h2>
+        </div>
+          {{> html_orbit_image_slider}}
   </section>
+
+
+
 
   <section id="kt" data-magellan-target="kt" class="row align-center collapse">
-    <div class="column small-11 medium-10 large-8">
-      <h2>Kontakt</h2>
-      <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
-        <a>humanresources@sanitas.com</a>
-      </p>
-    </div>
+
+        <div class="column small-11 medium-10 large-8">
+          <h2>Kontakt</h2>
+          <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
+            <a>humanresources@sanitas.com</a>
+          </p>
+        </div>
+
   </section>
 
+
    <footer class="row align-justify">
-    <div class="small-4 column social">
+    <div class="small-6 column shrink social">
         <i class="fa fa-facebook" aria-hidden="true"></i>
         <i class="fa fa-youtube" aria-hidden="true"></i>
         <i class="fa fa-twitter" aria-hidden="true"></i>        
     </div>
-    <div class="small-4 column">
+    <div class="small-6 column shrink">
       <a>Rechtlicher Hinweis</a>
       <a>Impressum</a>
-    </div>  
+    </div>
   </footer>
+
 </div>
+</div>
+
+
+
+
+
 
 <!-- <script src="https://cms.publisherconnect.ch/fileadmin/user/microsites/_skrollr/skrollr_0.6.30_min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="{{root}}assets/js/app.js"></script>
-<script src="https://use.typekit.net/wpv4wvn.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
 
 <script>     
 $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').prop('disabled', true);
 $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').remove();
 </script> 
-    
+  
 
 <!-- load Foundation sticky script, Logowechsel -->
 <script>
@@ -156,12 +222,22 @@ $('#skrollr-body').on('sticky.zf.stuckto:top', function(){
 })
 </script>
 
+
+
+
 <!-- <script>
+
+$.fn.scrollBottom = function() { 
+  return $(document).height() - this.scrollTop() - this.height();
+};
+
 function EasyPeasyParallax() {
-  scrollPos = $(this).scrollTop();
-  $('.landing').css({
-    'margin-top': (scrollPos/4)+"px",
-    'opacity': 1-(scrollPos/250)
+var scrollB = $(this).scrollBottom();
+var scrollPos = $(this).scrollTop();
+  $('.parallax').css({
+    'background-position' : '50% ' + (scrollB-scrollPos/4)+"px",
+    'height' : 0,
+    'padding-bottom': (scrollPos/3)+"px"
   });
 }
 $(document).ready(function(){
@@ -169,10 +245,23 @@ $(document).ready(function(){
     EasyPeasyParallax();
   });
 });
-</script> -->
+
+function parallax_komp(anc){
+  var elems = $('#'+anc);
+  var elem = elems[0];
+  var ot = elem.offsetTop;
+  var height = $(document).height();  
+  var sp = $(this).scrollTop();
+  var pelem = $(window).scrollBottom();
+  window.scrollTo(0, height - sp/3);
+}
+
+</script>
+ -->
 
 
-<script>
+
+<!-- <script>
 (function(){
 
   var parallax = document.querySelectorAll(".parallax_image"),
@@ -182,7 +271,7 @@ $(document).ready(function(){
     [].slice.call(parallax).forEach(function(el,i){
 
       var windowYOffset = window.pageYOffset,
-          elBackgrounPos = "50% " + (- windowYOffset * speed) + "px";
+          elBackgrounPos = "100% " + (- windowYOffset * speed) + "px";
 
       el.style.backgroundPosition = elBackgrounPos;
 
@@ -190,7 +279,7 @@ $(document).ready(function(){
   };
 
 })();
-</script>
+</script> -->
 
 <!-- <script>
 $('.parallax').each(function(){

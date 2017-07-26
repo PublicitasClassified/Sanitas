@@ -1,4 +1,3 @@
-//  Foundation for Sites Settings
 //  -----------------------------
 //
 //  Table of Contents:
@@ -46,7 +45,7 @@
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
+$global-font-size: 80%;
 $global-width: rem-calc(1000);
 $global-lineheight: 1.5;
 $foundation-palette: (
@@ -109,7 +108,15 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
+
+@font-face {
+    font-family:'TheMixSemiBold-Plain';
+    src: url(/assets/font/TheMixSemiBold-Plain.otf);
+    font-weight: bold;
+}
+
+//$header-font-family: $body-font-family;
+$header-font-family: 'TheMixSemiBold-Plain';
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
@@ -156,7 +163,7 @@ $hr-border: 1px solid $medium-gray;
 $hr-margin: rem-calc(20) auto;
 $list-lineheight: $paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
-$list-style-type: disc;
+$list-style-type: square;
 $list-style-position: outside;
 $list-side-margin: 1.25rem;
 $list-nested-side-margin: 1.25rem;
@@ -297,6 +304,7 @@ $card-divider-background: $light-gray;
 $card-border: 1px solid $light-gray;
 $card-shadow: none;
 $card-border-radius: $global-radius;
+$card-border-radius: .5rem;
 $card-padding: $global-padding;
 $card-margin: $global-margin;
 
@@ -462,7 +470,7 @@ $orbit-bullet-margin-bottom: 0.8rem;
 $orbit-caption-background: rgba($black, 0.5);
 $orbit-caption-padding: 1rem;
 $orbit-control-background-hover: rgba($black, 0.5);
-$orbit-control-padding: 1rem;
+$orbit-control-padding: .5rem;
 $orbit-control-zindex: 10;
 
 // 26. Pagination
