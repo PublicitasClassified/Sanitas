@@ -4,7 +4,7 @@ section {
 
 @font-face {
   font-family: 'TheMixSemiBold-Plain';
-  src: url(/assets/fonts/TheMixSemiBold-Plain.otf);
+  src: url(assets/fonts/TheMixSemiBold-Plain.otf);
   font-weight: bold; }
 
 /**
