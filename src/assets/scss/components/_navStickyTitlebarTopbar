@@ -4,7 +4,7 @@ $topbar-sticky-shrink-padding-stuck: 0; // controls the is stuck height of topba
 $topbar-sticky-shrink-bg: #fff; // Hintergrundfarbe Nav
 
 
-
+html{overflow-x: hidden;}
 
 /*@media screen and (max-width: 39.9375em) {}*/
 	.menu h5{font-family:'open-sans', Times, Helvetica, Roboto, Arial, sans-serif;}
@@ -170,8 +170,8 @@ section#home{padding:2rem 0 2rem 0;border-bottom:2px solid white;}
 section#sd{padding:4rem 0 2rem 0;}
 section#ao{padding:4rem 0 2rem 0;}
 section#uu{padding:4rem 0 2rem 0;}
-section#kt{padding:4rem 0 2rem 0;}
-footer{padding-bottom:50vw;}
+section#kt{padding:4rem 0 0rem 0;}
+footer{padding-bottom:200%;}
 
 
 h1, h2{color:darkgreen;font-weight:bold;}
@@ -200,7 +200,7 @@ h1, h2{color:darkgreen;font-weight:bold;}
 }
 
 
-section .fa.fa-long-arrow-up{color:darkgreen;font-size:2rem;padding:0 2rem 1rem .5rem;}
+section .fa.fa-long-arrow-up{color:darkgreen;font-size:2rem;padding:0 2rem 1.2rem .5rem;}
 
 footer {padding-top:1rem;}
 footer .fa{padding-right:.5rem;font-size:1.6rem;color:darkgreen;}
