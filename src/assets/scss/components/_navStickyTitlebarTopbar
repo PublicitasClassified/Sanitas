@@ -22,7 +22,7 @@ ul.menu.dropdown li:nth-of-type(-n+3) a h5{padding-right:2vw;}
 ul.menu.dropdown li:nth-of-type(1) a h5{margin: 0 0 0 -1rem;}
 ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 0;}
 
-#siteNav{padding:.75rem 0;}
+#siteNav{padding:.75rem 0;margin-top:2rem;}
 
 	.is-dropdown-submenu {
 	list-style-type: none;
@@ -154,14 +154,14 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 
 .orbit-container .row{border:none;}
 
-.orbit-slide .row{border-left:none;border-right:none;}
+.orbit-slide .row{list-style-type:none;border-left:none;border-right:none;}
 
 
 
 .orbit-previous, .orbit-next {
     color: white;
     margin: 0rem;
-    top:0;
+    top:3rem;
 }
 
 
@@ -174,7 +174,7 @@ section#kt{padding:4rem 0 2rem 0;}
 footer{padding-bottom:50vw;}
 
 
-h2{color:darkgreen;font-weight:bold;}
+h1, h2{color:darkgreen;font-weight:bold;}
 
 
 .responsive-embed, .flex-video {margin:0;}
@@ -200,7 +200,7 @@ h2{color:darkgreen;font-weight:bold;}
 }
 
 
-section .fa.fa-long-arrow-up{color:darkgreen;font-size:2rem;padding:0 2rem 2rem 0;}
+section .fa.fa-long-arrow-up{color:darkgreen;font-size:2rem;padding:0 2rem 1rem .5rem;}
 
 footer {padding-top:1rem;}
 footer .fa{padding-right:.5rem;font-size:1.6rem;color:darkgreen;}
@@ -208,11 +208,10 @@ footer a{padding:.5rem 0 0 .5rem;}
 
 section ul{list-style-type:none;}
 
-section ul li:before {    
+#sd ul li:before{    
 font-family: 'FontAwesome';
 content: '\f00c';
-margin: 0 10px 0 -23px;
+margin: 0 0.8rem 0 -7rem;
+padding-left: 5.24rem;
 color: darkgreen;
 }
-
-
