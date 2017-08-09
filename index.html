@@ -2,112 +2,206 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:phone="xalan://com.namics.publiconnect.wlc.common.formatter.PhoneFormatter">
   <xsl:output method="html" omit-xml-declaration="yes" />
+  <xsl:param name="languageParam" select="'de'"/>
+  <xsl:param name="logoUrlParam" select="''"/>
+  <xsl:param name="defaultImageUrlParam" select="''"/>
+  <xsl:param name="xsltTemplateImageBasePathParam" select="''"/>
+  <xsl:param name="defaultOriginalImageUrlParam" select="''"/>
+  <xsl:variable name="xsltTemplateImageBasePath" select="$xsltTemplateImageBasePathParam"/>
+  <xsl:variable name="logoUrl" select="$logoUrlParam"/>
+  <xsl:variable name="defaultImageUrl" select="$defaultImageUrlParam"/>
+  <xsl:variable name="bewerberlink" select="/jobAdDetail/adContact/externalObjectLink"/>
+  <xsl:variable name="showDefaultImageDescription">false</xsl:variable>
+  <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/Sensirion/"/>
 
+  <xsl:template match="/">
   <div style="display:none">
-    <xsl:param name="languageParam" select="'de'"/>
-    <xsl:param name="logoUrlParam" select="''"/>
-    <xsl:param name="defaultImageUrlParam" select="''"/>
-    <xsl:param name="xsltTemplateImageBasePathParam" select="''"/>
-    <xsl:param name="defaultOriginalImageUrlParam" select="''"/>
-    <xsl:variable name="xsltTemplateImageBasePath" select="$xsltTemplateImageBasePathParam"/>
-    <xsl:variable name="logoUrl" select="$logoUrlParam"/>
-    <xsl:variable name="defaultImageUrl" select="$defaultImageUrlParam"/>
-    <xsl:variable name="bewerberlink" select="/jobAdDetail/adContact/externalObjectLink"/>
-    <xsl:variable name="showDefaultImageDescription">false</xsl:variable>
-    <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/Sensirion/"/>
+      <xsl:choose>
+      <xsl:when test = "jobAdDetail/languageId='fr'">
+              <xsl:variable name="btnApply">Postuler</xsl:variable>
+              <xsl:variable name="btnPrint">Imprimer</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Recommander</xsl:variable>
+              <xsl:variable name="subOrganization">Société</xsl:variable>
+              <xsl:variable name="subObjecttitle">titre d'emploi</xsl:variable>
+              <xsl:variable name="subDescription">Description du poste</xsl:variable>
+              <xsl:variable name="subRequirements">Profil demandé</xsl:variable>
+              <xsl:variable name="subBenefits">Nousoffrons</xsl:variable>
+          </xsl:when>
+          <xsl:when test = "jobAdDetail/languageId='it'">
+              <xsl:variable name="btnApply">Candidatura</xsl:variable>
+              <xsl:variable name="btnPrint">Stampa</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Raccomandare</xsl:variable>
+              <xsl:variable name="subOrganization">Società</xsl:variable>
+              <xsl:variable name="subObjecttitle">titolo di lavoro</xsl:variable>
+              <xsl:variable name="subDescription">Descrizione del lavoro</xsl:variable>
+              <xsl:variable name="subRequirements">Il suo profilo</xsl:variable>
+              <xsl:variable name="subBenefits">Offriamo</xsl:variable>
+          </xsl:when>
+          <xsl:when test = "jobAdDetail/languageId='en'">
+              <xsl:variable name="btnApply">Apply now</xsl:variable>
+              <xsl:variable name="btnPrint">Print</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Send a friend</xsl:variable>
+              <xsl:variable name="subOrganization">Company</xsl:variable>
+              <xsl:variable name="subObjecttitle">Job Title</xsl:variable>
+              <xsl:variable name="subDescription">Job Description</xsl:variable>
+              <xsl:variable name="subRequirements">Your profile</xsl:variable>
+              <xsl:variable name="subBenefits">We offer</xsl:variable>
+          </xsl:when>
+          <xsl:otherwise>
+              <xsl:variable name="btnApply">Bewerben</xsl:variable>
+              <xsl:variable name="btnPrint">Drucken</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Weiterempfehlen</xsl:variable>
+              <xsl:variable name="subOrganization">Firmenportrait</xsl:variable>
+              <xsl:variable name="subObjecttitle">Stellenbezeichnung</xsl:variable>
+              <xsl:variable name="subDescription">Stellenbeschreibung</xsl:variable>
+              <xsl:variable name="subRequirements">Anforderungsprofil</xsl:variable>
+              <xsl:variable name="subBenefits">Wir bieten</xsl:variable>
+          </xsl:otherwise>
+      </xsl:choose>
   </div>
-
+  <!-- Firmenportrait -->
+  <xsl:template match="organization">
+      <xsl:value-of disable-output-escaping="yes" select="/jobAdDetail/organization"/>
+  </xsl:template>
+  
+  <!-- Titel -->
+  <xsl:template match="title">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Stellenbeschreibung -->
+  <xsl:template match="description">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Anforderungsprofil -->
+  <xsl:template match="requirements">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Wir bieten -->
+  <xsl:template match="benefits">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  
+  <head>
+   <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>Publicitas Portfolio</title>
+    <link rel="stylesheet" href="assets/css/app.css"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <script src="https://use.typekit.net/wpv4wvn.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>        
+    		
+    <!-- youtube player embed async loading and event trigger (play/pause) -->			
+    		<script>
+    
+      // 2. This code loads the IFrame Player API code asynchronously.
+    
+          var tag = document.createElement('script');
+    
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      // 3. This function creates an iframe (and YouTube player)
+      //    after the API code downloads.
+    
+          var player;
+          function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+    
+     //     videoId: 'rcY_Xx6MJpk',
+    
+    
+          events:
+           {      
+            'onStateChange': function (event)
+                {
+                if (event.data == YT.PlayerState.PLAYING) {
+      $('#header_claim').fadeOut('slow');
+                }
+                else if (event.data == YT.PlayerState.PAUSED)
+                   { 
+                     $("#header_claim").fadeIn('slow');
+                   }             
+                             
+                 }
+           }
+                
+        });
+            
+      }
+    	
+    		</script>
+  </head>
+    
+    
+    
+    
+        <html class="no-js">
+          <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Publicitas Portfolio</title>
+            <link rel="stylesheet" href="assets/css/app.css"/>
+    <!--         <link rel="stylesheet" href="assets/css/interactive_custom.css"/> -->
+          </head>
+          <body>
+    
+    
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
+        <a>Portfolio</a>
+        <ul class="menu">
+          <li>
+            <a href='adhosting_standard.html'>Adhosting-Stelleninserat Standard</a>
+          </li>    
+          <li>
+            <a href='#0'>Interaktive Stelleninserate</a>
+            <ul class='menu'>
+              <li><a href='interactive_onepager.html'>Onepager</a></li>
+              <li><a href='#0'>Microsite</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#0">Item 2</a>
+        <ul class="menu">
+          <li><a href="#0">Item 2A</a></li>
+          <li><a href="#0">Item 2B</a></li>
+        </ul>
+      </li>
+      <li><a href="#0">Item 3</a></li>
+      <li><a href='#0'>Item 4</a></li>
+    </ul>
       
-      
-      
-      <xsl:template match="/">
-          <html class="no-js">
-            <head>
-              <meta charset="utf-8" />
-              <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-              <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-              <title>Publicitas Portfolio</title>
-              <link rel="stylesheet" href="assets/css/app.css"/>
-      <!--         <link rel="stylesheet" href="assets/css/interactive_custom.css"/> -->
-      
-            </head>
-            <body>
-      
-      
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li>
-          <a>Portfolio</a>
-          <ul class="menu">
-            <li>
-              <a href='adhosting_standard.html'>Adhosting-Stelleninserat Standard</a>
-            </li>    
-            <li>
-              <a href='#0'>Interaktive Stelleninserate</a>
-              <ul class='menu'>
-                <li><a href='interactive_onepager.html'>Onepager</a></li>
-                <li><a href='#0'>Microsite</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#0">Item 2</a>
-          <ul class="menu">
-            <li><a href="#0">Item 2A</a></li>
-            <li><a href="#0">Item 2B</a></li>
-          </ul>
-        </li>
-        <li><a href="#0">Item 3</a></li>
-        <li><a href='#0'>Item 4</a></li>
-      </ul>
-        
-         <footer>
-          <div class="small-10 column">
-            <p>
-              2017 &#169; Publicitas -- Impressum ect. 
-            </p>
-          </div>  
-          <div class="small-2 column social">
-              <i class="fa fa-linkedin" aria-hidden="true"></i><xsl:text> </xsl:text>
-              <i class="fa fa-xing" aria-hidden="true"></i>
-          </div>  
-        </footer>
-      
-      
-      
-                <script src="assets/js/app.js"></script>
-                <script src="https://use.typekit.net/ldw1rdt.js"></script>
-                <script>try{Typekit.load({ async: true });}catch(e){}</script>
-              </body>
-            </html>
-        </xsl:template>
-      
-      
-      <!-- Firmenportrait -->
-      <xsl:template match="organization">
-          <xsl:value-of disable-output-escaping="yes" select="/jobAdDetail/organization"/>
-      </xsl:template>
-      
-      <!-- Titel -->
-      <xsl:template match="title">
-      	<xsl:value-of disable-output-escaping="yes" select="."/>
-      </xsl:template>
-      
-      <!-- Stellenbeschreibung -->
-      <xsl:template match="description">
-      	<xsl:value-of disable-output-escaping="yes" select="."/>
-      </xsl:template>
-      
-      <!-- Anforderungsprofil -->
-      <xsl:template match="requirements">
-      	<xsl:value-of disable-output-escaping="yes" select="."/>
-      </xsl:template>
-      
-      <!-- Wir bieten -->
-      <xsl:template match="benefits">
-      	<xsl:value-of disable-output-escaping="yes" select="."/>
-      </xsl:template>
-      
-      
+       <footer>
+        <div class="small-10 column">
+          <p>
+            2017 &#169; Publicitas -- Impressum ect. 
+          </p>
+        </div>  
+        <div class="small-2 column social">
+            <i class="fa fa-linkedin" aria-hidden="true"></i><xsl:text> </xsl:text>
+            <i class="fa fa-xing" aria-hidden="true"></i>
+        </div>  
+      </footer>
+    
+    
+    
+              <script src="assets/js/app.js"></script>
+              <script src="https://use.typekit.net/ldw1rdt.js"></script>
+              <script>try{Typekit.load({ async: true });}catch(e){}</script>
+            </body>
+          </html>
+    
+    
+  </xsl:template>      
 </xsl:stylesheet>
 
