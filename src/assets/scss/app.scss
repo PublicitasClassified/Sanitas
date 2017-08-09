@@ -30,12 +30,12 @@
 @include foundation-label;
 @include foundation-media-object;
 // @include foundation-off-canvas;
-@include foundation-orbit;
+// @include foundation-orbit;
 @include foundation-pagination;
 // @include foundation-progress-bar;
 // @include foundation-progress-element;
 // @include foundation-meter-element;
-@include foundation-slider;
+// @include foundation-slider;
 @include foundation-sticky;
 @include foundation-reveal;
 @include foundation-switch;
@@ -48,10 +48,11 @@
 @include foundation-visibility-classes;
 //@include foundation-float-classes;
 
-@include motion-ui-transitions;
-@include motion-ui-animations;
+// @include motion-ui-transitions;
+// @include motion-ui-animations;
 
+@import 'components/slick';
 @import 'components/youtube_video_resizer';
 @import 'components/navStickyTitlebarTopbar';
-@import 'components/easyParallax';
+// @import 'components/easyParallax';
 // @import 'components/skrollr';
