@@ -288,51 +288,58 @@
       <h2>Arbeiten bei der Sanitas</h2>
     </div>
     <div class="slider-wrap">
+    
+    
+            <span class="prev"> </span>
+            <span class="next"> </span>
+    
+    
       <div class="slider">
-        <div class="slide">
-          <div class="card">              
-            <div class="card-image">
-              <img class="orbit-image" src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen"/>
-            </div>
-            <div class="card-section">
-              <h6>Unternehmen</h6>
-              <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-            </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen" style="width:100%"/>
+          </div>
+          <div class="card-section">
+            <h6>Unternehmen</h6>
+            <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
           </div>
         </div>
-        <div class="slide">
-          <div class="card">              
-            <div class="card-image">
-             <img class="orbit-image" src="assets/img/orbit_medien.jpg" alt="Medien"/>
-            </div>
-            <div class="card-section">
-              <h6>Medien</h6>
-              <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-            </div>
+        <div class="card">
+          <div class="card-image" >
+           <img src="assets/img/orbit_medien.jpg" alt="Medien" style="width:100%"/>
+          </div>
+          <div class="card-section">
+            <h6>Medien</h6>
+            <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
           </div>
         </div>
-        <div class="slide">
-          <div class="card">                
-            <div class="card-image">
-             <img class="orbit-image" src="assets/img/orbit_publikationen.jpg" alt="Publikationen"/>
-            </div>
-            <div class="card-section">
-              <h6>Publikationen</h6>
-              <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-            </div>
+        <div class="card">
+          <div class="card-image">
+           <img src="assets/img/orbit_publikationen.jpg" alt="Publikationen" style="width:100%"/>
+          </div>
+          <div class="card-section">
+            <h6>Publikationen</h6>
+            <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
           </div>
         </div>
-        <div class="slide">
-          <div class="card">                 
-            <div class="card-image">
-             <img class="orbit-image" src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber"/>
-            </div>
-            <div class="card-section">
-              <h6>Sanitas als Arbeitsgeber</h6>
-              <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-            </div>
+        <div class="card">
+          <div class="card-image">
+           <img src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber" style="width:100%"/>
+          </div>
+          <div class="card-section">
+            <h6>Sanitas als Arbeitsgeber</h6>
+            <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
           </div>
         </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen" style="width:100%"/>
+          </div>
+          <div class="card-section">
+            <h6>Unternehmen</h6>
+            <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
+          </div>
+        </div>    
       </div>
     </div>
   </section>
@@ -401,6 +408,8 @@
       speed: 300,
       slidesToShow: 3,
       slidesToScroll: 4,
+      prevArrow: $('.prev'),
+      nextArrow: $('.next'),
       responsive: [
         {
           breakpoint: 1200,
