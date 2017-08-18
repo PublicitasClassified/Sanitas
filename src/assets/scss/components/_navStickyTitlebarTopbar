@@ -1,4 +1,3 @@
-
 $topbar-sticky-shrink-padding: .7vw 0 .7vw 0; // controls the un-stuck height of topbar
 $topbar-sticky-shrink-padding-stuck: 0; // controls the is stuck height of topbar
 $topbar-sticky-shrink-bg: #fff; // Hintergrundfarbe Nav
@@ -12,6 +11,13 @@ overflow-y:scroll;-ms-touch-action:manipulation;touch-action:manipulation;
 #skrollr-body{width:rem-calc(900);}
 
 @media screen and (max-width:39.9375em){
+
+body .row{border-left:0;border-right:0;}
+#skrollr-body{width:94%;}
+
+}
+
+@media screen and (min-width:40em) and (max-width:63.9375em) and (orientation: landscape){
 
 body .row{border-left:0;border-right:0;}
 #skrollr-body{width:94%;}
