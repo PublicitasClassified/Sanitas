@@ -4,9 +4,19 @@ $topbar-sticky-shrink-padding-stuck: 0; // controls the is stuck height of topba
 $topbar-sticky-shrink-bg: #fff; // Hintergrundfarbe Nav
 
 
-html{overflow-x: hidden;}
+html{
+overflow-y:scroll;-ms-touch-action:manipulation;touch-action:manipulation;
+}
 
+/* IE-Kompatibilität */
+#skrollr-body{width:rem-calc(900);}
 
+@media screen and (max-width:39.9375em){
+
+body .row{border-left:0;border-right:0;}
+#skrollr-body{width:94%;}
+
+}
 
 /*@media screen and (max-width: 39.9375em) {}*/
 	.menu h5{font-family:'open-sans', Times, Helvetica, Roboto, Arial, sans-serif;}
@@ -108,9 +118,6 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 
 
 
-
-
-
 .topbar-sticky-shrink {
   padding:$topbar-sticky-shrink-padding;
   transition: padding 0.5s ease;
@@ -140,20 +147,6 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 .title-bar{color:darkgreen;background-color:transparent;padding:0;}
 .title-bar .menu-icon{margin-right:0;}
 
-/*.top-bar {
-  padding: 2.1rem 2.1rem 2.1rem 3rem;
-  transition: padding .25s ease;
-}
-
-.is-stuck .top-bar {
-  padding: 1rem;
-  transition: padding .25s ease;
-}
-
-
-
-*/
-
 .orbit .row{border:none;}
 
 .orbit-slide .row{list-style-type:none;border-left:none;border-right:none;}
@@ -181,8 +174,7 @@ h1, h2{color:darkgreen;font-weight:bold;}
 
 .responsive-embed, .flex-video {margin:0;}
 
-.row{border-left:.5rem solid white;border-right:.5rem solid white;}
-.sticky{padding-top:2rem;border-left:.5rem solid white;border-right:.5rem solid white;}
+.sticky{padding-top:2rem;}
 
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
 
