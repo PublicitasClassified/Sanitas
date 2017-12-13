@@ -28,10 +28,12 @@ sections:
   -
     sub_id: sub id2
     sub_title: sub title2
-    sub_text: sub id 2   
+    sub_text: sub id 2
   -
-    partial: "{{> html_google_map}}"
+    partial: pages/html_google_map
     sub_title: sub title2
-    sub_text: sub id 2   
+    sub_text: sub id 2
   -
+
+
 

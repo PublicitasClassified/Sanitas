@@ -1,7 +1,90 @@
-<html class="no-js">
+<?xml version="1.0" encoding="utf-8"?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:phone="xalan://com.namics.publiconnect.wlc.common.formatter.PhoneFormatter">
+  <xsl:output method="html" omit-xml-declaration="yes" />
+  <xsl:param name="languageParam" select="'de'"/>
+  <xsl:param name="logoUrlParam" select="''"/>
+  <xsl:param name="defaultImageUrlParam" select="''"/>
+  <xsl:param name="xsltTemplateImageBasePathParam" select="''"/>
+  <xsl:param name="defaultOriginalImageUrlParam" select="''"/>
+  <xsl:variable name="xsltTemplateImageBasePath" select="$xsltTemplateImageBasePathParam"/>
+  <xsl:variable name="logoUrl" select="$logoUrlParam"/>
+  <xsl:variable name="defaultImageUrl" select="$defaultImageUrlParam"/>
+  <xsl:variable name="bewerberlink" select="/jobAdDetail/adContact/externalObjectLink"/>
+<!--   <xsl:variable name="showDefaultImageDescription">false</xsl:variable> -->
+  <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/"/>
+
+  <xsl:template match="/">
+  <div style="display:none">
+      <xsl:choose>
+      <xsl:when test = "jobAdDetail/languageId='fr'">
+              <xsl:variable name="btnApply">Postuler</xsl:variable>
+              <xsl:variable name="btnPrint">Imprimer</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Recommander</xsl:variable>
+              <xsl:variable name="subOrganization">Société</xsl:variable>
+              <xsl:variable name="subObjecttitle">titre d'emploi</xsl:variable>
+              <xsl:variable name="subDescription">Description du poste</xsl:variable>
+              <xsl:variable name="subRequirements">Profil demandé</xsl:variable>
+              <xsl:variable name="subBenefits">Nousoffrons</xsl:variable>
+          </xsl:when>
+          <xsl:when test = "jobAdDetail/languageId='it'">
+              <xsl:variable name="btnApply">Candidatura</xsl:variable>
+              <xsl:variable name="btnPrint">Stampa</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Raccomandare</xsl:variable>
+              <xsl:variable name="subOrganization">Società</xsl:variable>
+              <xsl:variable name="subObjecttitle">titolo di lavoro</xsl:variable>
+              <xsl:variable name="subDescription">Descrizione del lavoro</xsl:variable>
+              <xsl:variable name="subRequirements">Il suo profilo</xsl:variable>
+              <xsl:variable name="subBenefits">Offriamo</xsl:variable>
+          </xsl:when>
+          <xsl:when test = "jobAdDetail/languageId='en'">
+              <xsl:variable name="btnApply">Apply now</xsl:variable>
+              <xsl:variable name="btnPrint">Print</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Send a friend</xsl:variable>
+              <xsl:variable name="subOrganization">Company</xsl:variable>
+              <xsl:variable name="subObjecttitle">Job Title</xsl:variable>
+              <xsl:variable name="subDescription">Job Description</xsl:variable>
+              <xsl:variable name="subRequirements">Your profile</xsl:variable>
+              <xsl:variable name="subBenefits">We offer</xsl:variable>
+          </xsl:when>
+          <xsl:otherwise>
+              <xsl:variable name="btnApply">Bewerben</xsl:variable>
+              <xsl:variable name="btnPrint">Drucken</xsl:variable>
+              <xsl:variable name="btnSendAFriend">Weiterempfehlen</xsl:variable>
+              <xsl:variable name="subOrganization">Firmenportrait</xsl:variable>
+              <xsl:variable name="subObjecttitle">Stellenbezeichnung</xsl:variable>
+              <xsl:variable name="subDescription">Stellenbeschreibung</xsl:variable>
+              <xsl:variable name="subRequirements">Anforderungsprofil</xsl:variable>
+              <xsl:variable name="subBenefits">Wir bieten</xsl:variable>
+          </xsl:otherwise>
+      </xsl:choose>
+  </div>
+  <!-- Firmenportrait -->
+  <!-- <xsl:template match="organization">
+      <xsl:value-of disable-output-escaping="yes" select="/jobAdDetail/organization"/>
+  </xsl:template>
+   -->
+  <!-- Titel -->
+  <xsl:template match="title">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Stellenbeschreibung -->
+  <xsl:template match="description">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Anforderungsprofil -->
+  <xsl:template match="requirements">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template>
+  
+  <!-- Wir bieten -->
+  <!-- <xsl:template match="benefits">
+  	<xsl:value-of disable-output-escaping="yes" select="."/>
+  </xsl:template> -->
   <head>
-    <meta charset="utf-8" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
+   <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
     <title>Interaktives Stelleninserat Onepager</title>
@@ -10,423 +93,370 @@
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <script src="https://use.typekit.net/wpv4wvn.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>        
-    		
-    <!-- youtube player embed async loading and event trigger (play/pause) -->			
-    		<script>
-    
-      // 2. This code loads the IFrame Player API code asynchronously.
-    
-          var tag = document.createElement('script');
-    
-          tag.src = "https://www.youtube.com/iframe_api";
-          var firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    
-      // 3. This function creates an iframe (and YouTube player)
-      //    after the API code downloads.
-    
-          var player;
-          function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-    
-     //     videoId: 'rcY_Xx6MJpk',
-    
-    
-          events:
-           {      
-            'onStateChange': function (event)
-                {
-                if (event.data == YT.PlayerState.PLAYING) {
-      $('#header_claim').fadeOut('slow');
-                }
-                else if (event.data == YT.PlayerState.PAUSED)
-                   { 
-                     $("#header_claim").fadeIn('slow');
-                   }             
-                             
-                 }
-           }
-                
-        });
-            
-      }
-    	
-    		</script>
   </head>
-  
-  
-  <body class="row align-center">
-    <div id="skrollr-body">
-  
-    <!-- nav -->
-    <!-- <header id="header" class="topbar-sticky-shrink-header"></header> -->
     
     
-      <nav class="NavContainer" data-sticky-container="">
-        <div class="topbar-sticky-shrink" data-sticky="" data-options="top-anchor: header:bottom; marginTop: 0; stickyOn: small;">
+    <body class="row align-center">
+      <div id="skrollr-body">
     
-          <div id="siteNavToggler" class="title-bar" data-responsive-toggle="siteNav" data-hide-for="medium"> 
-            <a href="#" class="left_logo show-for-small-only">
-              <img src="assets/img/Logo_Sanitas.svg" width="40%"/>
-            </a>
-             <div class="left_title show-for-small-only">
-              <h5 class="text-right">
-                <xsl:comment>Stellentitel</xsl:comment>
-                <xsl:apply-templates select="/jobAdDetail/title"/>
-              </h5>
-            </div>   
-            <button class="menu-icon float-right" type="button" data-toggle=""></button>
-          </div>
-    
-          <div id="siteNav" class="top-bar" data-magellan="" activeClass="active" data-bar-offset='45'>
-    
-            <div class="left_logo hide-for-small-only">
-              <img src="assets/img/Logo_Sanitas.svg"/>
-            </div>
-             <div class="left_title hide-for-small-only">
-              <h6>
-                <div class="text-right">
+      <!-- nav -->
+      <!-- <header id="header" class="topbar-sticky-shrink-header"></header> -->
+      
+      
+        <nav class="NavContainer" data-sticky-container="">
+          <div class="topbar-sticky-shrink" data-sticky="" data-options="top-anchor: header:bottom; marginTop: 0; stickyOn: small;">
+      
+            <div id="siteNavToggler" class="title-bar" data-responsive-toggle="siteNav" data-hide-for="medium"> 
+              <a href="#" class="left_logo show-for-small-only">
+                <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/Logo_Sanitas.svg" width="40%"/>
+              </a>
+               <div class="left_title show-for-small-only">
+                <h5 class="text-right">
                   <xsl:comment>Stellentitel</xsl:comment>
                   <xsl:apply-templates select="/jobAdDetail/title"/>
-                </div>
-              </h6>
+                </h5>
+              </div>   
+              <button class="menu-icon float-right" type="button" data-toggle=""></button>
             </div>
-    
-            <div class="top-bar-right align-self-bottom">
-              <ul class="menu dropdown" data-dropdown-menu="">
-      <!--           <li class="has-submenu">
-                  <a href="#sd"><h5>Stellendetails</h5></a>
-                  <ul class="submenu vertical" data-submenu="">
-                    <li><a href="#bs">Beschreibung</a></li>
-                    <li><a href="#af">Anforderungen</a></li>
-                  </ul>
-                </li> -->
-    <!--             
-                <li><a href="#sd"><h5>Stellendetails</h5></a></li>
-    
-                
-                <li><a href="#ao"><h5>Arbeitsort</h5></a></li>
-    
-                
-                <li><a href="#uu"><h5>Arbeiten bei der Sanitas</h5></a></li>
-    
-                
-                <li><a href="#kt"><h5>Kontakt</h5></a></li>
-    
-                
-                <li><a href="#"><h5></h5></a></li>
-    
-                 -->
-                <li><a href="#sd"><h5>Stellendetails</h5></a></li>
-                <li><a href="#ao"><h5>Arbeitsort</h5></a></li>
-                <li><a href="#uu"><h5>Arbeiten bei der Sanitas</h5></a></li>
-                <li><a href="#kt"><h5>Kontakt</h5></a></li>                  
-              </ul>
+      
+            <div id="siteNav" class="top-bar" data-magellan="" activeClass="active" data-bar-offset='45'>
+      
+              <div class="left_logo hide-for-small-only">
+                <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/Logo_Sanitas.svg"/>
+              </div>
+               <div class="left_title hide-for-small-only">
+                <h6>
+                  <div class="text-right">
+                    <xsl:comment>Stellentitel</xsl:comment>
+                    <xsl:apply-templates select="/jobAdDetail/title"/>
+                  </div>
+                </h6>
+              </div>
+      
+              <div class="top-bar-right align-self-bottom">
+                <ul class="menu dropdown" data-dropdown-menu="">
+                  <li><a href="#sd"><h5>Stellendetails</h5></a></li>
+                  <li><a href="#uu"><h5>Arbeiten bei Sanitas</h5></a></li>
+                  <li><a href="#kt"><h5>Kontakt</h5></a></li>                  
+                </ul>
+              </div>
+      
             </div>
-    
+      
           </div>
-    
+        </nav>
+      
+      
+      <div id="sd" data-magellan-target="sd" class="row align-center collapse hero-section">
+        <div class="column small-11 medium-10 large-8 hero-section-text" >
+          <h2>Stellentitel kann auch mehrzeilig sein</h2>
+          <h1><xsl:apply-templates select="/jobAdDetail/title"/></h1>
         </div>
-      </nav>
-    
-    <!--     <div class="row align-center collapse">
-          <div class="small-12 column">
-            <div id="header_claim">
-              <h3>«Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut»</h3>
-            </div>
-            <div class="resizer">
-              <iframe id="player"
-                  src="https://www.youtube.com/embed/rcY_Xx6MJpk?enablejsapi=1&amp;rel=0&amp;showinfo=0&amp;autohide=1"
-                  frameborder="0" 
-                  allowfullscreen=""
-                  onload="this.height=this.contentWindow.document.body.scrollHeight;"
-                  width="100%"
-                  >
-              </iframe>
-            </div>
-          </div>
-        </div> -->
-    
-    
-    
-    <div class="row column">
-      <div class="responsive-embed widescreen">
-        <iframe
-          id="player"
-          width="854"
-          height="480"
-          src="https://www.youtube.com/embed/5BZNvGFoODw?enablejsapi=1&amp;rel=0&amp;showinfo=0&amp;autohide=1"
-          frameborder="0"
-          allowfullscreen=""
-          >
-        </iframe>
       </div>
-    </div>
-  
-      <!-- sections -->
-      <section id="home" class="row align-center collapse">
-        <div class="column small-11 medium-10 large-8">
-          <h1>Stellentitel kann auch mehrzeilig sein</h1>
-        </div>
+      
+    
+        <!-- sections -->
+    
+        <div id="parallax-wrapper">
+    
+    <!--  -->
+    
+    <!--     <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+        <div class="column small-12 medium-10 large-8">
+              <h1>Stellentitel</h1>
+              <p></p>
+          <p>sdfsdfsd</p>
+          
+          
+          
+          
+          </div>
       </section>
-      <div id="parallax-wrapper">
-        <section id="sd" data-magellan-target="sd" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
-            <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
-              <ul>
-                <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
-                <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
-                <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
-                <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
-              </ul>
-            </p>
-            <h3 id="af" data-magellan-target="af">Anforderungen</h3>
-            <ul>
-              <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
-              <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
-              <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
-              <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
-            </ul>
+      <section id="ao" data-magellan-target="ao" class="row align-center collapse">
+        <div class="column small-12 medium-10 large-8">
+              <h1></h1>
+              <p>jöjöjö</p>
+          <p>sdfsdfsdfsdfsdfsdfsf</p>
+          sub id
+          sub title
+          sub id
+          
           </div>
-        </section>
-        <section id="ao" data-magellan-target="ao" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Arbeitsort</h2>
-             <div class="responsive-embed">
-              <iframe
-                style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
-                allowfullscreen="allowfullscreen"
-                frameborder="0"
-              > 
-              </iframe>
+      </section>
+      <section id="" data-magellan-target="" class="row align-center collapse">
+        <div class="column small-12 medium-10 large-8">
+              <h1></h1>
+              <p></p>
+          <p></p>
+          sub id2
+          sub title2
+          sub id 2
+          
+          </div>
+      </section>
+      <section id="" data-magellan-target="" class="row align-center collapse">
+        <div class="column small-12 medium-10 large-8">
+              <h1></h1>
+              <p></p>
+          <p></p>
+          
+          sub title2
+          sub id 2
+          pages/html_google_map
+          </div>
+      </section>
+      <section id="" data-magellan-target="" class="row align-center collapse">
+        <div class="column small-12 medium-10 large-8">
+              <h1></h1>
+              <p></p>
+          <p></p>
+          
+          
+          
+          
+          </div>
+      </section>
+    
+    
+    
+     -->
+    <!-- 
+          <xsl:apply-templates select="/jobAdDetail/organization"/>
+     -->
+    
+    
+    
+    <!--     <section id="home" class="row align-center collapse">
+          
+          <div id="sd" data-magellan-target="sd" class="row align-center collapse hero-section">
+            <div class="column small-11 medium-10 large-8 hero-section-text" >
+              <h2>Stellentitel kann auch mehrzeilig sein</h2>
+              <h1><xsl:apply-templates select="/jobAdDetail/title"/></h1>
             </div>
           </div>
-        </section>
-        <section id="uu" data-magellan-target="uu" class="row align-center collapse">
-          <div class="column small-11 medium-10 large-8">
-            <h2>Arbeiten bei der Sanitas</h2>
-          </div>
-          <div class="slider-wrap">
           
-          
-                  <span class="prev"> </span>
-                  <span class="next"> </span>
-          
-          
-            <div class="slider">
-              <div class="card">
-                <div class="card-image">
-                  <img src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen" style="width:100%"/>
-                </div>
-                <div class="card-section">
-                  <h6>Unternehmen</h6>
-                  <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image" >
-                 <img src="assets/img/orbit_medien.jpg" alt="Medien" style="width:100%"/>
-                </div>
-                <div class="card-section">
-                  <h6>Medien</h6>
-                  <p>Wir geben Journalisten gerne Auskunft zur Sanitas Krankenversicherung und nehmen Stellung zu gesundheitspolitischen Themen.</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                 <img src="assets/img/orbit_publikationen.jpg" alt="Publikationen" style="width:100%"/>
-                </div>
-                <div class="card-section">
-                  <h6>Publikationen</h6>
-                  <p>Mit dem Geschäftsbericht und dem Kundenmagazin über Finanzzahlen und neuste Entwicklungen im Gesundheitswesen informiert sein.</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                 <img src="assets/img/orbit_arbeitsgeber.jpg" alt="Sanitas als Arbeitsgeber" style="width:100%"/>
-                </div>
-                <div class="card-section">
-                  <h6>Sanitas als Arbeitsgeber</h6>
-                  <p>Sanitas gehört zu den führenden Krankenkassen und bietet Berufserfahrenen und Lernenden spannende Aufgaben und vielseitige Einsatzmöglichkeit</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                  <img src="assets/img/orbit_unternehmen.jpg" alt="Unternehmen" style="width:100%"/>
-                </div>
-                <div class="card-section">
-                  <h6>Unternehmen</h6>
-                  <p>Sanitas gehört mit rund 822'500 Kundinnen und Kunden zu den grössten Krankenkassen der Schweiz.</p>
-                </div>
-              </div>    
+        </section> -->
+    
+          <section class="row align-center collapse">
+            <div class="column small-11 medium-10 large-8">
+              <h4>Beschreibung</h4>
+              <xsl:comment>
+                <p>ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem</p>
+              <xsl:comment>
+              <xsl:apply-templates select="/jobAdDetail/description"/>
             </div>
-          </div>
-        </section>
-        <section id="kt" data-magellan-target="kt" class="row align-spaced collapse">
-          <div class="column small-8 medium-7 large-4">
-            <h2>Kontakt</h2>
-            <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
-              <a>humanresources@sanitas.com</a>
-            </p>
-          </div>
-          <div class="column small-2 align-self-bottom shrink">
-            <a href="#skrollr-body">home<i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
-          </div>
-        </section>
-        <footer class="row align-justify">
-          <div class="small-6 column shrink social">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-            <i class="fa fa-youtube" aria-hidden="true"></i>
-            <i class="fa fa-twitter" aria-hidden="true"></i>        
-          </div>
-          <div class="small-6 column shrink">
-            <a>Rechtlicher Hinweis</a>
-            <a>Impressum</a>
-          </div>
-        </footer>
-      </div><!-- parallax-wrapper -->
-    </div><!-- scrollr-body -->
-  
-  <!-- <script src="https://cms.publisherconnect.ch/fileadmin/user/microsites/_skrollr/skrollr_0.6.30_min.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/slick/slick.min.js"></script>
-  
-  <script>     
-    $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').prop('disabled', true);
-    $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').remove();
-  </script>
-  
-  
-  
-  <!-- load Foundation sticky script, Logowechsel -->
-  <script>
-    $('#skrollr-body').on('sticky.zf.stuckto:top', function(){
-      $('.left_logo').addClass("hide");
-      $('.left_title').removeClass("hide");
-  
-    }).on('sticky.zf.unstuckfrom:top', function(){
-      $('.left_logo').removeClass("hide");
-      $('.left_title').addClass("hide");
-    })
-  </script>
-  
-  <!-- slick carousel -->
-  <script>
-    $(document).ready(function(){
-      $slideshow = $('.slider').slick({ 
-        infinite: false,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 4,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true
+          </section>
+          <section id="af" class="row align-center collapse">
+            <div class="column small-11 medium-10 large-8">      
+              <h4> Anforderungen</h4>
+              <xsl:comment>
+                <p>orem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit </p>
+              <xsl:comment>
+              <xsl:apply-templates select="/jobAdDetail/requirements"/>
+            </div>
+          </section>
+    
+          <section id="uu" data-magellan-target="uu" class="row align-center collapse">
+            <div class="column small-11 medium-10 large-8">
+              <h4>Arbeitsort</h4>
+               <div class="responsive-embed">
+                <iframe
+                  style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Jägergasse 3, 8004 Zürich, Schweiz')"
+                  allowfullscreen="allowfullscreen"
+                  frameborder="0"
+                > 
+                </iframe>
+              </div>
+            </div>
+          </section>
+    
+    
+          <section id="kt" data-magellan-target="kt" class="row align-spaced">
+    
+              <div class="column small-11 medium-4">
+                <div class="card">
+    
+                    <div class="card-image radius">
+                     <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/bewerben.jpg" alt="Unternehmen"/>
+                    </div>
+                    <div class="card-section">
+                      <h6>Sind Sie interessiert?</h6>
+                      <p>Wir freuen uns auf Ihre Onlinebewerbung.</p>
+                      <p>Sie wollen etwas bewegen</p>
+                    </div>
+    
+                </div>
+              </div>
+              <div class="column small-11 medium-4">
+                  <div class="card">
+                    <div class="card-image radius">
+                      <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/kontakt.jpg" alt="Unternehmen"/>
+                    </div>
+                    <div class="card-section">
+                      <h6>Sind Sie interessiert?</h6>
+                      <p>Wir freuen uns auf Ihre Onlinebewerbung.</p>
+                      <p>Sie wollen etwas bewegen</p>
+                    </div>
+                  </div>
+              </div>
+    
+          </section>
+    
+          <footer class="row align-justify">
+             <div class="small-6 column shrink social">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <i class="fa fa-youtube" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>        
+            </div>
+            <div class="small-6 column shrink">
+              <a>Rechtlicher Hinweis</a>
+              <a>Impressum</a>
+            </div>
+          </footer>
+        </div><!-- parallax-wrapper -->
+      </div><!-- scrollr-body -->
+    
+    <!-- <script src="https://cms.publisherconnect.ch/fileadmin/user/microsites/_skrollr/skrollr_0.6.30_min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/slick/slick.min.js"></script>
+    
+    <script>     
+      $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').prop('disabled', true);
+      $('link[href="https://adhosting.publisherconnect.ch/adhosting/css/wlc.css"]').remove();
+    </script>
+    
+    
+    
+    <!-- load Foundation sticky script, Logowechsel -->
+    <script>
+      $('#skrollr-body').on('sticky.zf.stuckto:top', function(){
+        $('.left_logo').addClass("hide");
+        $('.left_title').removeClass("hide");
+    
+      }).on('sticky.zf.unstuckfrom:top', function(){
+        $('.left_logo').removeClass("hide");
+        $('.left_title').addClass("hide");
+      })
+    </script>
+    
+    <!-- slick carousel -->
+    <script>
+      $(document).ready(function(){
+        $slideshow = $('.slider').slick({ 
+          infinite: false,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 4,
+          prevArrow: $('.prev'),
+          nextArrow: $('.next'),
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
             }
-          },
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 640,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+          ]
+        });
       });
-    });
-  </script>
-  
-  <!-- <script>
-  
-  $.fn.scrollBottom = function() { 
-    return $(document).height() - this.scrollTop() - this.height();
-  };
-  
-  function EasyPeasyParallax() {
-  var scrollB = $(this).scrollBottom();
-  var scrollPos = $(this).scrollTop();
-    $('.parallax').css({
-      'background-position' : '50% ' + (scrollB-scrollPos/4)+"px",
-      'height' : 0,
-      'padding-bottom': (scrollPos/3)+"px"
-    });
-  }
-  $(document).ready(function(){
-    $(window).scroll(function() {
-      EasyPeasyParallax();
-    });
-  });
-  
-  function parallax_komp(anc){
-    var elems = $('#'+anc);
-    var elem = elems[0];
-    var ot = elem.offsetTop;
-    var height = $(document).height();  
-    var sp = $(this).scrollTop();
-    var pelem = $(window).scrollBottom();
-    window.scrollTo(0, height - sp/3);
-  }
-  
-  </script>
-   -->
-  
-  
-  
-  <!-- <script>
-  (function(){
-  
-    var parallax = document.querySelectorAll(".parallax_image"),
-        speed = 0.1;
-  
-    window.onscroll = function(){
-      [].slice.call(parallax).forEach(function(el,i){
-  
-        var windowYOffset = window.pageYOffset,
-            elBackgrounPos = "100% " + (- windowYOffset * speed) + "px";
-  
-        el.style.backgroundPosition = elBackgrounPos;
-  
-      });
+    </script>
+    
+    <!-- <script>
+    
+    $.fn.scrollBottom = function() { 
+      return $(document).height() - this.scrollTop() - this.height();
     };
-  
-  })();
-  </script> -->
-  
-  <!-- <script>
-  $('.parallax').each(function(){
-          $this= $(this);
-          var window_y = (window.pageYOffset+1000);
-          var elBackgrounPos = "0 " + (window_y * speed) + "px";  
-          $this.css('background-position', elBackgrounPos);
-  });
-  </script> -->
-  
-  <!-- <script>  
-    skrollr.init({
-    smoothScrolling: false,
-    mobileDeceleration: 0.004
+    
+    function EasyPeasyParallax() {
+    var scrollB = $(this).scrollBottom();
+    var scrollPos = $(this).scrollTop();
+      $('.parallax').css({
+        'background-position' : '50% ' + (scrollB-scrollPos/4)+"px",
+        'height' : 0,
+        'padding-bottom': (scrollPos/3)+"px"
+      });
+    }
+    $(document).ready(function(){
+      $(window).scroll(function() {
+        EasyPeasyParallax();
+      });
     });
-  </script> -->
-  
-    </body>
-  </html>
-  
-</html>
+    
+    function parallax_komp(anc){
+      var elems = $('#'+anc);
+      var elem = elems[0];
+      var ot = elem.offsetTop;
+      var height = $(document).height();  
+      var sp = $(this).scrollTop();
+      var pelem = $(window).scrollBottom();
+      window.scrollTo(0, height - sp/3);
+    }
+    
+    </script>
+     -->
+    
+    
+    
+    <!-- <script>
+    (function(){
+    
+      var parallax = document.querySelectorAll(".parallax_image"),
+          speed = 0.1;
+    
+      window.onscroll = function(){
+        [].slice.call(parallax).forEach(function(el,i){
+    
+          var windowYOffset = window.pageYOffset,
+              elBackgrounPos = "100% " + (- windowYOffset * speed) + "px";
+    
+          el.style.backgroundPosition = elBackgrounPos;
+    
+        });
+      };
+    
+    })();
+    </script> -->
+    
+    <!-- <script>
+    $('.parallax').each(function(){
+            $this= $(this);
+            var window_y = (window.pageYOffset+1000);
+            var elBackgrounPos = "0 " + (window_y * speed) + "px";  
+            $this.css('background-position', elBackgrounPos);
+    });
+    </script> -->
+    
+    <!-- <script>  
+      skrollr.init({
+      smoothScrolling: false,
+      mobileDeceleration: 0.004
+      });
+    </script> -->
+    
+      </body>
+    </html>
+    
+  </xsl:template>      
+</xsl:stylesheet>
+

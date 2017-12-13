@@ -1,4 +1,4 @@
-$topbar-sticky-shrink-padding: .7vw 0 .7vw 0; // controls the un-stuck height of topbar
+$topbar-sticky-shrink-padding: .7vw .7vw .7vw 2.5vw; // controls the un-stuck height of topbar
 $topbar-sticky-shrink-padding-stuck: 0; // controls the is stuck height of topbar
 $topbar-sticky-shrink-bg: #fff; // Hintergrundfarbe Nav
 
@@ -7,24 +7,47 @@ html{
 overflow-y:scroll;-ms-touch-action:manipulation;touch-action:manipulation;
 }
 
+
+$hero-height: 40vh;
+
+.hero-section {
+  background: linear-gradient(45deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%), url('https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/header.jpg') 50% no-repeat;
+  background-size: cover;
+  height: $hero-height;
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  .hero-section-text {
+  color: $white;
+  padding-bottom:1.5vw;
+  }
+
+
+}
+
+
 /* IE-Kompatibilität */
-#skrollr-body{width:rem-calc(900);}
+/*#skrollr-body{width:rem-calc(1440);}
 
 @media screen and (max-width:39.9375em){
-
+/*
 body .row{border-left:0;border-right:0;}
 #skrollr-body{width:94%;}
-
+/*
 }
 
 @media screen and (min-width:40em) and (max-width:63.9375em) and (orientation: landscape){
-
+/*
 body .row{border-left:0;border-right:0;}
 #skrollr-body{width:94%;}
 
 }
 
-/*@media screen and (max-width: 39.9375em) {}*/
+*/
+
+
 	.menu h5{font-family:'open-sans', Times, Helvetica, Roboto, Arial, sans-serif;}
 	ul.menu.dropdown li a h5{font-size:.9rem;margin:0;line-height:1;}
 	ul.dropdown.menu > li > a{padding:0; margin:0;}
@@ -40,7 +63,7 @@ ul.menu.dropdown li:nth-of-type(-n+3) a h5{padding-right:2vw;}
 ul.menu.dropdown li:nth-of-type(1) a h5{margin: 0 0 0 -1rem;}
 ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 0;}
 
-#siteNav{padding:.75rem 0;margin-top:2rem;}
+#siteNav{padding:.75rem 0 0 1rem; margin-top:0;}
 
 	.is-dropdown-submenu {
 	list-style-type: none;
@@ -73,6 +96,7 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 0;}
 
 	#siteNav{padding:0;}
 
+
 ul.dropdown.menu li{flex:0 1 auto; align-self:auto;}
 ul.dropdown.menu li:nth-of-type(1){flex:1 1 auto;}
 ul.dropdown.menu li:nth-of-type(4){flex:1 1 auto;}
@@ -94,6 +118,9 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 
 	.dropdown.menu > li.opens-left > .is-dropdown-submenu {
 	}
+
+.menu{width:25rem;}
+
 }
 
 @media screen and (min-width: 64em) {
@@ -120,6 +147,8 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 
 	.dropdown.menu > li.opens-left > .is-dropdown-submenu {
 	}
+
+.menu{width:30rem;}
 }
 
 
@@ -151,25 +180,14 @@ ul.menu.dropdown li:nth-of-type(4) a h5{margin: 0 0 0 auto;}
 .left_logo img{width:100%;}
 
 .title-bar{color:darkgreen;background-color:transparent;padding:0;}
-.title-bar .menu-icon{margin-right:0;}
-
-.orbit .row{border:none;}
-
-.orbit-slide .row{list-style-type:none;border-left:none;border-right:none;}
+.title-bar .menu-icon{margin-right:1.5vw;}
 
 
 
-.orbit-previous, .orbit-next {
-    color: white;
-    margin: 0rem;
-    top:3rem;
-}
-
-
-
+/*
 section#home{padding:2rem 0 2rem 0;border-bottom:2px solid white;}
 section#sd{padding:4rem 0 2rem 0;}
-section#ao{padding:4rem 0 2rem 0;}
+
 section#uu{padding:4rem 0 2rem 0;}
 section#kt{padding:4rem 0 0rem 0;}
 footer{padding-bottom:200%;}
@@ -199,7 +217,7 @@ h1, h2{color:darkgreen;font-weight:bold;}
 
 }
 
-
+*/
 section .fa.fa-long-arrow-up{color:darkgreen;font-size:2rem;padding:0 2rem 1.2rem .5rem;}
 
 footer {padding-top:1rem;}
@@ -214,4 +232,54 @@ content: '\f00c';
 margin: 0 0.8rem 0 -7rem;
 padding-left: 5.24rem;
 color: darkgreen;
+}
+
+
+h4 {color:#666564;font-weight:bold;}
+
+section{padding:4rem 0 2rem 0;}
+section{padding:2rem 0 0 0;}
+section#uu{;background-color:white;}
+section#kt{;background-color:white;}
+
+@media screen and (min-width: 64em) {
+section#kt {
+	border-left: 9.2vw solid white;
+	border-right: 9.2vw solid white;
+}
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+section#kt {
+	border-left: 0vw solid white;
+	border-right: 0vw solid white;
+	}
+}
+
+
+.menu{
+	margin:0;
+}
+
+.card {
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    padding: 1.5rem 1.5rem .5rem 1.5rem;
+    clear: both;
+}
+.card-image{width:30%;float:left; }
+.card-image img{border-radius: 50%; padding-top:.5rem;}
+.card-section {
+	margin-left:40%;
+    width: 60%;
+}
+
+
+
+
+.row .row {
+	margin: 0;
+	border-left:2.5vw solid white;
+	border-right:2.5vw solid white;
+	/* margin-left: -1.17188rem; */
 }

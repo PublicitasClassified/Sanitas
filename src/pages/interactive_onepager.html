@@ -1,7 +1,7 @@
 ---
-layout: html-header
+layout: xslt-header
 meta-title: Interaktives Stelleninserat Onepager
-basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives_Stelleninserat/AEW/
+basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/
 ---
 
 
@@ -10,42 +10,53 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
 
   <!-- nav -->
   {{> navStickyTitlebarTopbar}}
-  {{> html_youtube_video}}
+  {{> html_static_header}}
 
     <!-- sections -->
-    <section id="home" class="row align-center collapse">
-      <div class="column small-11 medium-10 large-8">
-        <h1>Stellentitel kann auch mehrzeilig sein</h1>
-      </div>
-    </section>
+
     <div id="parallax-wrapper">
-      <section id="sd" data-magellan-target="sd" class="row align-center collapse">
+
+<!-- {{#if content.nav.production}}
+<p>production</p>
+{{/if}} -->
+
+<!--   {{> html_Section_Subsection}} -->
+<!-- 
+      <xsl:apply-templates select="/jobAdDetail/organization"/>
+ -->
+
+
+
+<!--     <section id="home" class="row align-center collapse">
+      {{> html_static_header}}
+    </section> -->
+
+      <section class="row align-center collapse">
         <div class="column small-11 medium-10 large-8">
-          <h3 id="bs" data-magellan-target="bs">Beschreibung</h3>
-          <p>Sie erwartet eine abwechslungsreiche, vielseitige und interessante Herausforderung. Zu Ihren Hauptaufgaben gehören:
-            <ul>
-              <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
-              <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
-              <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
-              <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
-            </ul>
-          </p>
-          <h3 id="af" data-magellan-target="af">Anforderungen</h3>
-          <ul>
-            <li>quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar</li>
-            <li>tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aene</li>
-            <li>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam</li>
-            <li>Betriebliche Koordination zwischen Baustellen, anderen Abteilungen und Partnern</li>
-          </ul>
+          <h4>Beschreibung</h4>
+          <xsl:comment>
+            <p>ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem</p>
+          <xsl:comment>
+          <xsl:apply-templates select="/jobAdDetail/description"/>
         </div>
       </section>
-      <section id="ao" data-magellan-target="ao" class="row align-center collapse">
+      <section id="af" class="row align-center collapse">
+        <div class="column small-11 medium-10 large-8">      
+          <h4> Anforderungen</h4>
+          <xsl:comment>
+            <p>orem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit </p>
+          <xsl:comment>
+          <xsl:apply-templates select="/jobAdDetail/requirements"/>
+        </div>
+      </section>
+
+      <section id="uu" data-magellan-target="uu" class="row align-center collapse">
         <div class="column small-11 medium-10 large-8">
-          <h2>Arbeitsort</h2>
+          <h4>Arbeitsort</h4>
            <div class="responsive-embed">
             <iframe
               style="border:0"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Laurenzenvorstadt 11, 5000 Aarau, Schweiz')"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQq_ZhEB9ZlfNQ5kONLvsFglPSuZtpPDI&amp;q=('Jägergasse 3, 8004 Zürich, Schweiz')"
               allowfullscreen="allowfullscreen"
               frameborder="0"
             > 
@@ -53,25 +64,41 @@ basepath: https://cms.publisherconnect.ch/fileadmin/user/microsites/Interaktives
           </div>
         </div>
       </section>
-      <section id="uu" data-magellan-target="uu" class="row align-center collapse">
-        <div class="column small-11 medium-10 large-8">
-          <h2>Arbeiten bei der Sanitas</h2>
-        </div>
-        {{> html_slick_carousel}}
+
+
+      <section id="kt" data-magellan-target="kt" class="row align-spaced">
+
+          <div class="column small-11 medium-4">
+            <div class="card">
+
+                <div class="card-image radius">
+                 <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/bewerben.jpg" alt="Unternehmen"/>
+                </div>
+                <div class="card-section">
+                  <h6>Sind Sie interessiert?</h6>
+                  <p>Wir freuen uns auf Ihre Onlinebewerbung.</p>
+                  <p>Sie wollen etwas bewegen</p>
+                </div>
+
+            </div>
+          </div>
+          <div class="column small-11 medium-4">
+              <div class="card">
+                <div class="card-image radius">
+                  <img src="https://cms.publisherconnect.ch/fileadmin/user/microsites/sanitas/assets/img/kontakt.jpg" alt="Unternehmen"/>
+                </div>
+                <div class="card-section">
+                  <h6>Sind Sie interessiert?</h6>
+                  <p>Wir freuen uns auf Ihre Onlinebewerbung.</p>
+                  <p>Sie wollen etwas bewegen</p>
+                </div>
+              </div>
+          </div>
+
       </section>
-      <section id="kt" data-magellan-target="kt" class="row align-spaced collapse">
-        <div class="column small-8 medium-7 large-4">
-          <h2>Kontakt</h2>
-          <p>Sie haben Fragen? Wir helfen Ihnen gerne weiter!
-            <a>humanresources@sanitas.com</a>
-          </p>
-        </div>
-        <div class="column small-2 align-self-bottom shrink">
-          <a href="#skrollr-body">home<i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
-        </div>
-      </section>
+
       <footer class="row align-justify">
-        <div class="small-6 column shrink social">
+         <div class="small-6 column shrink social">
           <i class="fa fa-facebook" aria-hidden="true"></i>
           <i class="fa fa-youtube" aria-hidden="true"></i>
           <i class="fa fa-twitter" aria-hidden="true"></i>        

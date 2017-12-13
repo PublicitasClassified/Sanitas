@@ -1,6 +1,7 @@
 {
   "nav": [
     {
+      "production": "TRUE",
       "name_short": "Name",
       "name_long": "Name GmbH & Co. KG",
       "name_title": "\/jobAdDetail\/title",
@@ -8,5 +9,18 @@
       "url": "www.firma.de",
       "email": "info@firma.de"
     }
-  ]
+  ],
+
+  "sections": [
+    {
+
+      "id": "ao",
+      "title":"Arbeitsort",
+      "text": "lorem ipsum dolor sit amet",
+      "sub_id": "sub id",
+      "sub_title": "sub title",
+      "sub_text": "sub id"
+    }
+  ]  
 }
+
