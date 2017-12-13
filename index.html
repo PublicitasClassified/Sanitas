@@ -11,8 +11,8 @@
   <xsl:variable name="logoUrl" select="$logoUrlParam"/>
   <xsl:variable name="defaultImageUrl" select="$defaultImageUrlParam"/>
   <xsl:variable name="bewerberlink" select="/jobAdDetail/adContact/externalObjectLink"/>
-  <xsl:variable name="showDefaultImageDescription">false</xsl:variable>
-  <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/Sensirion/"/>
+<!--   <xsl:variable name="showDefaultImageDescription">false</xsl:variable> -->
+  <xsl:variable name="xslt_cms_basepath" select="//cms.publisherconnect.ch/fileadmin/user/microsites/"/>
 
   <xsl:template match="/">
   <div style="display:none">
@@ -60,10 +60,10 @@
       </xsl:choose>
   </div>
   <!-- Firmenportrait -->
-  <xsl:template match="organization">
+  <!-- <xsl:template match="organization">
       <xsl:value-of disable-output-escaping="yes" select="/jobAdDetail/organization"/>
   </xsl:template>
-  
+   -->
   <!-- Titel -->
   <xsl:template match="title">
   	<xsl:value-of disable-output-escaping="yes" select="."/>
@@ -80,11 +80,9 @@
   </xsl:template>
   
   <!-- Wir bieten -->
-  <xsl:template match="benefits">
+  <!-- <xsl:template match="benefits">
   	<xsl:value-of disable-output-escaping="yes" select="."/>
-  </xsl:template>
-  
-  
+  </xsl:template> -->
   <head>
    <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -95,48 +93,6 @@
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <script src="https://use.typekit.net/wpv4wvn.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>        
-    		
-    <!-- youtube player embed async loading and event trigger (play/pause) -->			
-    		<script>
-    
-      // 2. This code loads the IFrame Player API code asynchronously.
-    
-          var tag = document.createElement('script');
-    
-          tag.src = "https://www.youtube.com/iframe_api";
-          var firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    
-      // 3. This function creates an iframe (and YouTube player)
-      //    after the API code downloads.
-    
-          var player;
-          function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-    
-     //     videoId: 'rcY_Xx6MJpk',
-    
-    
-          events:
-           {      
-            'onStateChange': function (event)
-                {
-                if (event.data == YT.PlayerState.PLAYING) {
-      $('#header_claim').fadeOut('slow');
-                }
-                else if (event.data == YT.PlayerState.PAUSED)
-                   { 
-                     $("#header_claim").fadeIn('slow');
-                   }             
-                             
-                 }
-           }
-                
-        });
-            
-      }
-    	
-    		</script>
   </head>
     
     
